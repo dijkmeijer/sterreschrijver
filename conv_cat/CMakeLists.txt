@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 2.8.11)
+project (conv_cat)
+include_directories(../Novas_C3.1 ../Novasextra)
+add_executable(convcat conv_cat_entry.c)
+target_link_libraries(convcat  novasextra novas)

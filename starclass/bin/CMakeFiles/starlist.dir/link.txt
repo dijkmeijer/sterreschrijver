@@ -1,0 +1,1 @@
+/usr/bin/c++.exe    -Wl,--enable-auto-import  CMakeFiles/starlist.dir/starlist.cpp.o  -o starlist.exe -Wl,--out-implib,libstarlist.dll.a -Wl,--major-image-version,0,--minor-image-version,0  libstarclass.a -lnovasextra -lnovas 

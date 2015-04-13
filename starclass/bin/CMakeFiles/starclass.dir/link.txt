@@ -1,0 +1,2 @@
+/usr/bin/ar.exe cr libstarclass.a  CMakeFiles/starclass.dir/starclass.cpp.o
+/usr/bin/ranlib.exe libstarclass.a

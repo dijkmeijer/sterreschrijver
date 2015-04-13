@@ -1,0 +1,2 @@
+/home/Valentijn/sterrenschrijver_cmake/starclass/bin/CMakeFiles/starclass.dir
+/home/Valentijn/sterrenschrijver_cmake/starclass/bin/CMakeFiles/starlist.dir

@@ -1,0 +1,6 @@
+cmake_minimum_required (VERSION 2.8.11)
+project (starclass)
+include_directories(../Novas_C3.1 ../Novasextra ../include ../quat ../starclass)
+add_library(starclass STATIC starclass.cpp)
+add_executable(starlist starlist.cpp)
+target_link_libraries(starlist starclass novasextra novas)

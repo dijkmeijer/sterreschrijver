@@ -1,0 +1,7 @@
+cmake_minimum_required (VERSION 2.8.11)
+project (dxf_bezier)
+include_directories( ../dxf)
+include_directories( ../include)
+add_library( dxfbezier STATIC dxfbezierline.cpp )
+add_executable( testdxflines testdxflines.cpp)
+target_link_libraries( testdxflines dxfbezier dl_dxf)
