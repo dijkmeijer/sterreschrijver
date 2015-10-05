@@ -59,6 +59,7 @@ public:
     short int m, d, y;   // tijd variabelen: year month, day, hour, minute
     int h, min;
     int setdate(short int fy, short int fm, short int fd, short int fh, short int fmin);
+	int setLocation(double latitude, double longitude);
     double UCT_offset;   // offset i.v.m. locale tijd
     double deltat;       // delta t offset i.v.m. verschil UTC julian Date
     double magnitude;    // maximale magnitude v.d. ster

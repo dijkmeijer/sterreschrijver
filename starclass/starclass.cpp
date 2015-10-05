@@ -104,6 +104,12 @@ int starclass::setdate(short int fy, short int fm, short int fd, short int fh, s
     return 0;
 }
 
+int starclass::setLocation(double latitude, double longitude) 
+{
+	make_on_surface(latitude, longitude,0.,10,0.,&geo_loc);
+	return 0;
+}
+
 int starclass::get_starlist()
 {
     short int error;
