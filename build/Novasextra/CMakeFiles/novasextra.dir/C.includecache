@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Novasextra/../Novas_C3.1/novas.h
+stdio.h
+-
+math.h
+-
+string.h
+-
+stdlib.h
+-
+ctype.h
+-
+novascon.h
+../Novasextra/../Novas_C3.1/novascon.h
+solarsystem.h
+../Novasextra/../Novas_C3.1/solarsystem.h
+nutation.h
+../Novasextra/../Novas_C3.1/nutation.h
+
+../Novasextra/../Novas_C3.1/novascon.h
+
+../Novasextra/../Novas_C3.1/nutation.h
+
+../Novasextra/../Novas_C3.1/solarsystem.h
+
+/home/debian/sterreschrijver/Novasextra/Novasextra.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+Novasextra.h
+/home/debian/sterreschrijver/Novasextra/Novasextra.h
+
+/home/debian/sterreschrijver/Novasextra/Novasextra.h
+novas.h
+-
+

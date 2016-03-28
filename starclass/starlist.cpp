@@ -83,7 +83,8 @@ int main(int argc, char **argv){
 		x=50.-sin((star->star_list[i].az)*3.14/180.) * star->star_list[i].zd ;
 		y=50.-cos((star->star_list[i].az)*3.14/180.) * star->star_list[i].zd;
 		cout << "<div style=\"position: absolute; top: " <<y << "%;  left: " << x << "%; \">" << star->star_list[i].starname << " </div>" << endl;
-		cout << "<a href=\"info.php?x="<<x-50<<"&y="<<y-50<<"\"><img src=\"ster.png\" height=4% width=4% style=\"position: absolute; top: " << y-2 << "%;  left: " << x-2 << "%; \"></a>"<< endl;
+		//cout << "<a href=\"info.php?x="<<x-50<<"&y="<<y-50<<"\"><img src=\"ster.png\" height=4% width=4% style=\"position: absolute; top: " << y-2 << "%;  left: " << x-2 << "%; \"></a>"<< endl;
+		cout << "<img id=\"star\" x="<<x-50<<" y="<<y-50<<" src=\"ster.png\" height=4% width=4% style=\"position: absolute; top: " << y-2 << "%;  left: " << x-2 << "%; \">"<< endl;
 	}
 	//cout << "</div>";
 	return 0;

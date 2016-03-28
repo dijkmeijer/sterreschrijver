@@ -1,0 +1,2 @@
+/usr/bin/ar cr libnovas.a  CMakeFiles/novas.dir/novas.c.o CMakeFiles/novas.dir/readeph0.c.o CMakeFiles/novas.dir/solsys1.c.o CMakeFiles/novas.dir/nutation.c.o CMakeFiles/novas.dir/novascon.c.o CMakeFiles/novas.dir/eph_manager.c.o CMakeFiles/novas.dir/cio_file.c.o
+/usr/bin/ranlib libnovas.a

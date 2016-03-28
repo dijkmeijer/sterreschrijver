@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/testdxflines.dir/testdxflines.cpp.o  -o testdxflines -rdynamic libdxfbezier.a ../dxf/libdl_dxf.a 
