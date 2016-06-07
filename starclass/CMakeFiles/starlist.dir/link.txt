@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/starlist.dir/starlist.cpp.o  -o starlist -rdynamic libstarclass.a ../Novasextra/libnovasextra.a ../Novas_C3.1/libnovas.a -lboost_program_options 

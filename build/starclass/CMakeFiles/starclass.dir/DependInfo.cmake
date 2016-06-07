@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/debian/sterreschrijver/starclass/starclass.cpp" "/home/debian/sterreschrijver/build/starclass/CMakeFiles/starclass.dir/starclass.cpp.o"
+  "/home/valentijn/sterreschrijver/starclass/starclass.cpp" "/home/valentijn/sterreschrijver/build/starclass/CMakeFiles/starclass.dir/starclass.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

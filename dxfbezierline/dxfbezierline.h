@@ -46,7 +46,7 @@ using namespace std;
 
 class dxfbezier2linesClass : public DL_CreationAdapter {
 public:
-    dxfbezier2linesClass(char *file_name, int st, double textLengte);
+    dxfbezier2linesClass(string file_name, int st, double textLengte);
     ~dxfbezier2linesClass(); // constructor opent dxf file
 
     list<double> Punten;
@@ -69,7 +69,6 @@ public:
     double X_prev;      // begin coordinaten afzonderlijke lijnstukken
     double Y_prev;
     double text_lengte;
-    char file[256];
     int Normalize();
     int Scale();
     double getlength();

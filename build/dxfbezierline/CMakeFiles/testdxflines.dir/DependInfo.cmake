@@ -4,14 +4,14 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/debian/sterreschrijver/dxfbezierline/testdxflines.cpp" "/home/debian/sterreschrijver/build/dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.o"
+  "/home/valentijn/sterreschrijver/dxfbezierline/testdxflines.cpp" "/home/valentijn/sterreschrijver/build/dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/debian/sterreschrijver/build/dxfbezierline/CMakeFiles/dxfbezier.dir/DependInfo.cmake"
-  "/home/debian/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/DependInfo.cmake"
+  "/home/valentijn/sterreschrijver/build/dxfbezierline/CMakeFiles/dxfbezier.dir/DependInfo.cmake"
+  "/home/valentijn/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

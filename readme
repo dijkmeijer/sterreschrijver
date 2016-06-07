@@ -1,0 +1,41 @@
+git clone sterreschrijver van github
+
+intall boost library
+	tar uitpakken en bootstrap.sh uitvoeren
+	compileer en installeer op standaard locatie /usr/local/lib en /usr/local/include/boost 
+	sudo b2 link=static install
+
+Maak ephimeres bestand passend op besturingssysteem
+
+
+sterrenschrijver programma bestaat uit meerdere delen:
+een aantal gegevens moet worden ingevoerd om de diverse onderdelen uit te voeren:
+
+het eerste programma wordt gebruikt om een ster te keizen en een startrail te berekenen
+	1 locatie van toeschouwer (latitude; 51.43075 en longitude; 5.48818) 
+	2 moment van waarnemen (datum en tijd = Now default)
+	3 minimale magnitude van de weergegevens sterren (magnitude > 3; deafult)
+	4 berekenen van een lijst van sterren die vallen binnen een aantal graden vanuit het zenith (40° als default)
+	
+	Om het star-trail te berekenen zijn nodig:
+	1 een ster (uit de berekende lijst)
+	2 sluitertijd in seconde.(default 3600)
+	3 stapgrootte tussen 2 posities op de startrail (default 1 seconde)
+	
+	output:
+	1 starlist (raw of geformateerd als html);
+	2 startrail positie lijst van de ster over de sluitertijd in stapgrootte
+		Startrail wordt genormaliseerd naar de pool. Dat wil zeggen het wordt een concentrisch cirkeldeel
+	    symmetrisch om de lijn tussen de pool en de positie van de ster halverwege de sluitertijd)
+
+
+berekenen camera beweging:
+
+	1 tekst als dxf
+	2 startrail gegevens
+	2 gegevens camera: brandpuntafstand lens en negatief grootte. (default 135mm en 4"x5")
+	4 cameramechaniek dimensionering. excenter, motorpositie
+	
+	
+in en uitvoer via webserver, PHP en jquery
+	

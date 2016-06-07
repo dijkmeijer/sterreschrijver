@@ -30,27 +30,30 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
-	/usr/local/bin/cmake -i .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -60,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles /home/debian/sterreschrijver/build/starclass/CMakeFiles/progress.marks
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles /home/valentijn/sterreschrijver/build/starclass/CMakeFiles/progress.marks
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/clean
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 starclass/CMakeFiles/starclass.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/CMakeFiles/starclass.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/CMakeFiles/starclass.dir/rule
 .PHONY : starclass/CMakeFiles/starclass.dir/rule
 
 # Convenience name for target.
@@ -109,12 +112,12 @@ starclass: starclass/CMakeFiles/starclass.dir/rule
 
 # fast build rule for target.
 starclass/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/build
 .PHONY : starclass/fast
 
 # Convenience name for target.
 starclass/CMakeFiles/starlist.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/CMakeFiles/starlist.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 starclass/CMakeFiles/starlist.dir/rule
 .PHONY : starclass/CMakeFiles/starlist.dir/rule
 
 # Convenience name for target.
@@ -123,7 +126,7 @@ starlist: starclass/CMakeFiles/starlist.dir/rule
 
 # fast build rule for target.
 starlist/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/build
 .PHONY : starlist/fast
 
 starclass.o: starclass.cpp.o
@@ -131,7 +134,7 @@ starclass.o: starclass.cpp.o
 
 # target to build an object file
 starclass.cpp.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/starclass.cpp.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/starclass.cpp.o
 .PHONY : starclass.cpp.o
 
 starclass.i: starclass.cpp.i
@@ -139,7 +142,7 @@ starclass.i: starclass.cpp.i
 
 # target to preprocess a source file
 starclass.cpp.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/starclass.cpp.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/starclass.cpp.i
 .PHONY : starclass.cpp.i
 
 starclass.s: starclass.cpp.s
@@ -147,7 +150,7 @@ starclass.s: starclass.cpp.s
 
 # target to generate assembly for a file
 starclass.cpp.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/starclass.cpp.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/starclass.cpp.s
 .PHONY : starclass.cpp.s
 
 starlist.o: starlist.cpp.o
@@ -155,7 +158,7 @@ starlist.o: starlist.cpp.o
 
 # target to build an object file
 starlist.cpp.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/starlist.cpp.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/starlist.cpp.o
 .PHONY : starlist.cpp.o
 
 starlist.i: starlist.cpp.i
@@ -163,7 +166,7 @@ starlist.i: starlist.cpp.i
 
 # target to preprocess a source file
 starlist.cpp.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/starlist.cpp.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/starlist.cpp.i
 .PHONY : starlist.cpp.i
 
 starlist.s: starlist.cpp.s
@@ -171,7 +174,7 @@ starlist.s: starlist.cpp.s
 
 # target to generate assembly for a file
 starlist.cpp.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/starlist.cpp.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/starlist.cpp.s
 .PHONY : starlist.cpp.s
 
 # Help Target
@@ -201,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,0 +1,8 @@
+/home/valentijn/sterreschrijver/conv_cat/CMakeFiles/convcat.dir
+/home/valentijn/sterreschrijver/dxf/CMakeFiles/dl_dxf.dir
+/home/valentijn/sterreschrijver/dxfbezierline/CMakeFiles/dxfbezier.dir
+/home/valentijn/sterreschrijver/Novas_C3.1/CMakeFiles/novas.dir
+/home/valentijn/sterreschrijver/Novasextra/CMakeFiles/novasextra.dir
+/home/valentijn/sterreschrijver/starclass/CMakeFiles/starclass.dir
+/home/valentijn/sterreschrijver/starclass/CMakeFiles/starlist.dir
+/home/valentijn/sterreschrijver/dxfbezierline/CMakeFiles/testdxflines.dir

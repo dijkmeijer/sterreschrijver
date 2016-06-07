@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/debian/sterreschrijver/Novasextra/Novasextra.c" "/home/debian/sterreschrijver/build/Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.o"
+  "/home/valentijn/sterreschrijver/Novasextra/Novasextra.c" "/home/valentijn/sterreschrijver/build/Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 

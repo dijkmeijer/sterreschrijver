@@ -4,14 +4,14 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/debian/sterreschrijver/conv_cat/conv_cat_entry.c" "/home/debian/sterreschrijver/build/conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.o"
+  "/home/valentijn/sterreschrijver/conv_cat/conv_cat_entry.c" "/home/valentijn/sterreschrijver/build/conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/debian/sterreschrijver/build/Novasextra/CMakeFiles/novasextra.dir/DependInfo.cmake"
-  "/home/debian/sterreschrijver/build/Novas_C3.1/CMakeFiles/novas.dir/DependInfo.cmake"
+  "/home/valentijn/sterreschrijver/build/Novasextra/CMakeFiles/novasextra.dir/DependInfo.cmake"
+  "/home/valentijn/sterreschrijver/build/Novas_C3.1/CMakeFiles/novas.dir/DependInfo.cmake"
   )
 
 # The include file search paths:

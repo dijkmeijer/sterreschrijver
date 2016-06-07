@@ -30,7 +30,7 @@ nutation.h
 
 ../Novasextra/../Novas_C3.1/solarsystem.h
 
-/home/debian/sterreschrijver/Novasextra/Novasextra.c
+/home/valentijn/sterreschrijver/Novasextra/Novasextra.c
 stdio.h
 -
 stdlib.h
@@ -38,9 +38,9 @@ stdlib.h
 string.h
 -
 Novasextra.h
-/home/debian/sterreschrijver/Novasextra/Novasextra.h
+/home/valentijn/sterreschrijver/Novasextra/Novasextra.h
 
-/home/debian/sterreschrijver/Novasextra/Novasextra.h
+/home/valentijn/sterreschrijver/Novasextra/Novasextra.h
 novas.h
 -
 

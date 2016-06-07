@@ -34,23 +34,20 @@
  * Default constructor.
  */
 
-dxfbezier2linesClass::dxfbezier2linesClass(char *file_name, int st, double textLengte)
+dxfbezier2linesClass::dxfbezier2linesClass(string file_name, int st, double textLengte)
 {
     n=0;
     res = 50000;
-    min_X=1000000;
-    max_X=-1000000;
-    min_Y=1000000;
-    max_Y=-1000000;
-    text_lengte = textLengte;
-    strcpy(file,file_name);
-    aantal_punten = st;
-    stepscale=80000.0; // stappen per mm op negatief
 
+    text_lengte = textLengte;
+    //strcpy(file,file_name);
+    aantal_punten = st;
+	char *cstr = new char[file_name.length() + 1];
+	strcpy(cstr, file_name .c_str());
     DL_Dxf* dxf = new DL_Dxf();
-    if (!dxf->in(file, this))   // if file open failed
+    if (!dxf->in(cstr, this))   // if file open failed
     {
-        std::cerr << file << " could not be opened.\n";
+        std::cerr << file_name << " could not be opened.\n";
         exit(1);
     }
     delete dxf;
@@ -467,6 +464,10 @@ double dxfbezier2linesClass::calcLine()
     double dy;
     Lijnen = new point[aantal_punten];
     it = controlPunten.begin();
+    max_X=-100000;
+    max_Y=-100000;
+    min_X=100000;
+    min_Y=100000;
     while(it != controlPunten.end())
     {
         //printf("%6.3f, %6.3f  ", *it++, *it++);
@@ -510,7 +511,7 @@ double dxfbezier2linesClass::calcLine()
         // cout << L << endl;
     }
 
-//  Normalize();
+ // Normalize();
 return result;
 
 }

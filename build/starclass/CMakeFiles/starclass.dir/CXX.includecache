@@ -50,31 +50,31 @@ iostream
 math.h
 -
 
-/home/debian/sterreschrijver/starclass/../Novasextra/Novasextra.h
+/home/valentijn/sterreschrijver/Novasextra/Novasextra.h
 novas.h
 -
 
-/home/debian/sterreschrijver/starclass/starclass.cpp
+/home/valentijn/sterreschrijver/starclass/starclass.cpp
 iostream
 -
 starclass.h
-/home/debian/sterreschrijver/starclass/starclass.h
+/home/valentijn/sterreschrijver/starclass/starclass.h
 stdio.h
 -
 stdlib.h
 -
 eph_manager.h
-/home/debian/sterreschrijver/starclass/eph_manager.h
+/home/valentijn/sterreschrijver/starclass/eph_manager.h
 novas.h
-/home/debian/sterreschrijver/starclass/novas.h
+/home/valentijn/sterreschrijver/starclass/novas.h
 ../Novasextra/Novasextra.h
-/home/debian/sterreschrijver/starclass/../Novasextra/Novasextra.h
+/home/valentijn/sterreschrijver/Novasextra/Novasextra.h
 
-/home/debian/sterreschrijver/starclass/starclass.h
+/home/valentijn/sterreschrijver/starclass/starclass.h
 Novasextra.h
-/home/debian/sterreschrijver/starclass/Novasextra.h
+/home/valentijn/sterreschrijver/starclass/Novasextra.h
 point.h
-/home/debian/sterreschrijver/starclass/point.h
+/home/valentijn/sterreschrijver/starclass/point.h
 Quaternion.h
-/home/debian/sterreschrijver/starclass/Quaternion.h
+/home/valentijn/sterreschrijver/starclass/Quaternion.h
 

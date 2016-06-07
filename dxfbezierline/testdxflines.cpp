@@ -25,14 +25,16 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <boost/program_options.hpp>
 
 #include "dxfbezierline.h"
 
 void usage();
-void testReading(char* file);
+void ConvertDXFBezier();
 
-
+int steps;
+double textlength;
+string f_name;
 
 /*
  * @brief Main function for DXFLib test program.
@@ -45,21 +47,71 @@ void testReading(char* file);
  *		file couldn't be opened
  * @retval 1 if file opened
  */
- #ifndef STARCLASSLIB
+
 int main(int argc, char** argv) {
 
-    // Check given arguments:
-    if (argc<2) {
-        usage();
-        return 0;
-    }
-    cout << argv[1] << endl;
-    testReading(argv[1]);
+
+// Boost header +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	char Mes[125];
+	sprintf(Mes, "Allowed options for %s", argv[0]);
+	boost::program_options::options_description d(Mes);
+    d.add_options()
+      ("help,h",
+        "produce this help message")
+      ("file,f",       
+	     boost::program_options::value<string>()->required(),
+         "Set name of DXF file to be converted  ")
+      ("textlength,l",
+         boost::program_options::value<float>(),
+         "Set length of text")      
+	  ("steps,s",
+         boost::program_options::value<int>(),
+         "Set number of steps in text");
+
+  boost::program_options::variables_map m;
+  boost::program_options::store(
+  boost::program_options::parse_command_line(
+   argc, argv, d), m);
+  boost::program_options::notify(m);
+
+  //If one of the options is set to 'help'...
+  if (m.count("help"))
+  {
+    //Display the options_description
+    std::cout << "option" << d << "\n";
+	return 0;
+  }
+
+  if (m.count("file"))
+  {
+      f_name = m["file"].as<string> ();
+  }
+
+  if (m.count("textlength"))
+  {
+     textlength = m["textlength"].as<float>();
+      
+  } 
+  else textlength = 10.;
+  
+   if (m.count("steps"))
+  {
+      steps = m["steps"].as<int>();     
+  }
+  else steps = 3600;
+ 
+  
+// end BOOST header   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+// main function   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    
+    ConvertDXFBezier();
 
     return 0;
 }
 
-#endif
 
 /*
  * @brief Prints error message if file name not specified as command
@@ -70,13 +122,17 @@ void usage() {
 }
 
 
-void testReading(char* file) {
+void ConvertDXFBezier() {
     // Load DXF file into memory:
     //std::cout << "Reading file " << file << "...\n";
-    dxfbezier2linesClass* creationClass = new dxfbezier2linesClass("willekeurige_tekst.dxf",3600,19.);
+    
+    dxfbezier2linesClass* creationClass = new dxfbezier2linesClass((string) f_name, steps, textlength);
 
     //    creationClass -> verschuif(file);
-    cout << creationClass->Lijnen[3598].x << " " << creationClass->Lijnen[3598].y;
+    cout.precision(12);
+    for(int i =0; i < steps-1; i++)
+    cout << creationClass->Lijnen[i].x << " " << creationClass->Lijnen[i].y << endl;
+   // cout << creationClass -> min_X << " " << creationClass -> max_X << " " << creationClass -> min_Y << " " << creationClass -> max_Y << " " << endl;
 //    delete dxf;
     delete creationClass;
 }

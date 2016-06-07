@@ -30,27 +30,30 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
-	/usr/local/bin/cmake -i .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -60,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles /home/debian/sterreschrijver/build/conv_cat/CMakeFiles/progress.marks
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles /home/valentijn/sterreschrijver/build/conv_cat/CMakeFiles/progress.marks
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/clean
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 conv_cat/CMakeFiles/convcat.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/CMakeFiles/convcat.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 conv_cat/CMakeFiles/convcat.dir/rule
 .PHONY : conv_cat/CMakeFiles/convcat.dir/rule
 
 # Convenience name for target.
@@ -109,7 +112,7 @@ convcat: conv_cat/CMakeFiles/convcat.dir/rule
 
 # fast build rule for target.
 convcat/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/build
 .PHONY : convcat/fast
 
 conv_cat_entry.o: conv_cat_entry.c.o
@@ -117,7 +120,7 @@ conv_cat_entry.o: conv_cat_entry.c.o
 
 # target to build an object file
 conv_cat_entry.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.o
 .PHONY : conv_cat_entry.c.o
 
 conv_cat_entry.i: conv_cat_entry.c.i
@@ -125,7 +128,7 @@ conv_cat_entry.i: conv_cat_entry.c.i
 
 # target to preprocess a source file
 conv_cat_entry.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.i
 .PHONY : conv_cat_entry.c.i
 
 conv_cat_entry.s: conv_cat_entry.c.s
@@ -133,7 +136,7 @@ conv_cat_entry.s: conv_cat_entry.c.s
 
 # target to generate assembly for a file
 conv_cat_entry.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/conv_cat_entry.c.s
 .PHONY : conv_cat_entry.c.s
 
 # Help Target
@@ -159,6 +162,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

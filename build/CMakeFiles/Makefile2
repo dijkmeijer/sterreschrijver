@@ -38,19 +38,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 #=============================================================================
 # Directory level rules for directory Novas_C3.1
@@ -74,7 +77,7 @@ Novas_C3.1/preinstall:
 Novas_C3.1/CMakeFiles/novas.dir/all:
 	$(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/depend
 	$(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  5 6 7 8 9 10 11
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  5 6 7 8 9 10 11
 	@echo "Built target novas"
 .PHONY : Novas_C3.1/CMakeFiles/novas.dir/all
 
@@ -84,9 +87,9 @@ all: Novas_C3.1/CMakeFiles/novas.dir/all
 
 # Build rule for subdir invocation for target.
 Novas_C3.1/CMakeFiles/novas.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/CMakeFiles/novas.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : Novas_C3.1/CMakeFiles/novas.dir/rule
 
 # Convenience name for target.
@@ -124,7 +127,7 @@ Novasextra/preinstall:
 Novasextra/CMakeFiles/novasextra.dir/all:
 	$(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/depend
 	$(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  12
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  12
 	@echo "Built target novasextra"
 .PHONY : Novasextra/CMakeFiles/novasextra.dir/all
 
@@ -134,9 +137,9 @@ all: Novasextra/CMakeFiles/novasextra.dir/all
 
 # Build rule for subdir invocation for target.
 Novasextra/CMakeFiles/novasextra.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 Novasextra/CMakeFiles/novasextra.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : Novasextra/CMakeFiles/novasextra.dir/rule
 
 # Convenience name for target.
@@ -174,7 +177,7 @@ dxf/preinstall:
 dxf/CMakeFiles/dl_dxf.dir/all:
 	$(MAKE) -f dxf/CMakeFiles/dl_dxf.dir/build.make dxf/CMakeFiles/dl_dxf.dir/depend
 	$(MAKE) -f dxf/CMakeFiles/dl_dxf.dir/build.make dxf/CMakeFiles/dl_dxf.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  2 3
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  2 3
 	@echo "Built target dl_dxf"
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/all
 
@@ -184,9 +187,9 @@ all: dxf/CMakeFiles/dl_dxf.dir/all
 
 # Build rule for subdir invocation for target.
 dxf/CMakeFiles/dl_dxf.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 dxf/CMakeFiles/dl_dxf.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/rule
 
 # Convenience name for target.
@@ -226,7 +229,7 @@ dxfbezierline/preinstall:
 dxfbezierline/CMakeFiles/dxfbezier.dir/all:
 	$(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/depend
 	$(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  4
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  4
 	@echo "Built target dxfbezier"
 .PHONY : dxfbezierline/CMakeFiles/dxfbezier.dir/all
 
@@ -236,9 +239,9 @@ all: dxfbezierline/CMakeFiles/dxfbezier.dir/all
 
 # Build rule for subdir invocation for target.
 dxfbezierline/CMakeFiles/dxfbezier.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/CMakeFiles/dxfbezier.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : dxfbezierline/CMakeFiles/dxfbezier.dir/rule
 
 # Convenience name for target.
@@ -262,7 +265,7 @@ dxfbezierline/CMakeFiles/testdxflines.dir/all: dxf/CMakeFiles/dl_dxf.dir/all
 dxfbezierline/CMakeFiles/testdxflines.dir/all: dxfbezierline/CMakeFiles/dxfbezier.dir/all
 	$(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/depend
 	$(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  15
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  15
 	@echo "Built target testdxflines"
 .PHONY : dxfbezierline/CMakeFiles/testdxflines.dir/all
 
@@ -272,9 +275,9 @@ all: dxfbezierline/CMakeFiles/testdxflines.dir/all
 
 # Build rule for subdir invocation for target.
 dxfbezierline/CMakeFiles/testdxflines.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/CMakeFiles/testdxflines.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : dxfbezierline/CMakeFiles/testdxflines.dir/rule
 
 # Convenience name for target.
@@ -314,7 +317,7 @@ starclass/preinstall:
 starclass/CMakeFiles/starclass.dir/all:
 	$(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/depend
 	$(MAKE) -f starclass/CMakeFiles/starclass.dir/build.make starclass/CMakeFiles/starclass.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  13
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  13
 	@echo "Built target starclass"
 .PHONY : starclass/CMakeFiles/starclass.dir/all
 
@@ -324,9 +327,9 @@ all: starclass/CMakeFiles/starclass.dir/all
 
 # Build rule for subdir invocation for target.
 starclass/CMakeFiles/starclass.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 starclass/CMakeFiles/starclass.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : starclass/CMakeFiles/starclass.dir/rule
 
 # Convenience name for target.
@@ -351,7 +354,7 @@ starclass/CMakeFiles/starlist.dir/all: Novasextra/CMakeFiles/novasextra.dir/all
 starclass/CMakeFiles/starlist.dir/all: starclass/CMakeFiles/starclass.dir/all
 	$(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/depend
 	$(MAKE) -f starclass/CMakeFiles/starlist.dir/build.make starclass/CMakeFiles/starlist.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  14
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  14
 	@echo "Built target starlist"
 .PHONY : starclass/CMakeFiles/starlist.dir/all
 
@@ -361,9 +364,9 @@ all: starclass/CMakeFiles/starlist.dir/all
 
 # Build rule for subdir invocation for target.
 starclass/CMakeFiles/starlist.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 starclass/CMakeFiles/starlist.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : starclass/CMakeFiles/starlist.dir/rule
 
 # Convenience name for target.
@@ -402,7 +405,7 @@ conv_cat/CMakeFiles/convcat.dir/all: Novas_C3.1/CMakeFiles/novas.dir/all
 conv_cat/CMakeFiles/convcat.dir/all: Novasextra/CMakeFiles/novasextra.dir/all
 	$(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/depend
 	$(MAKE) -f conv_cat/CMakeFiles/convcat.dir/build.make conv_cat/CMakeFiles/convcat.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles  1
 	@echo "Built target convcat"
 .PHONY : conv_cat/CMakeFiles/convcat.dir/all
 
@@ -412,9 +415,9 @@ all: conv_cat/CMakeFiles/convcat.dir/all
 
 # Build rule for subdir invocation for target.
 conv_cat/CMakeFiles/convcat.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 conv_cat/CMakeFiles/convcat.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : conv_cat/CMakeFiles/convcat.dir/rule
 
 # Convenience name for target.

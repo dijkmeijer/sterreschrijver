@@ -11,32 +11,35 @@ extern "C" {
 
 using namespace std;
 
-starclass::starclass(int stap)
+starclass::starclass()
 {
     //ctor
 
     UCT_offset=1;
+    UCT_offset=0;
     deltat = 61.0;
-    setdate(2013, 01, 07, 22 , 45);  // yyyy mm dd hh mm
-    magnitude = 3.;    // maximale magnitude v.d. ster
-    bereik = 40.;
-    refstar=21421;
-    stappen=stap; //3600;
-    focus=135;
-    motor_x=80.;    // positie motor voor X beweging
-    motor_y=80.; // positie motor voor X beweging
+    setdate(2016, 05, 12, 04 , 12, 0);  // yyyy mm dd hh mm
+    magnitude = 3.;    	// maximale magnitude v.d. ster
+    bereik = 40.;       // hoek in graden tov zenith
+    refstar=32349;		// referentie ster default  
+    refstar=24436;		// referentie ster default  
+    stappen=3600; 		// 3600 = 1 uur;
+    focus=135;			//lens brandpunt
+    motor_x=80.;   		// positie motor voor X beweging
+    motor_y=80.; 		// positie motor voor X beweging
     Lijnen = new point[stappen];
-    exposuretime=1.;
+    exposuretime=1.;    // 1 uur
 
     short int de_num;
 
     short int error = 0;
 
     double jd_beg, jd_end;
-    /*
-       Open the JPL ephemeris file.
-    */
-
+    
+   
+   
+    // ********* Open the JPL ephemeris file.
+ 
     try{
 		error = ephem_open ((char*)"JPLEPH", &jd_beg,&jd_end,&de_num);}
 	catch(int e)
@@ -44,20 +47,16 @@ starclass::starclass(int stap)
            printf ("Error %d from ephem_open\n", error);
     }
 
-    // printf ("JPL Ephemeris DE%d open. jd_beg = %10.2f  jd_end = %10.2f\n",
-     //             de_num, jd_beg, jd_end);
-    // printf ("\n");
-    
-//    make_on_surface(51.43075, 5.48818,0.,22.65,1010.,&geo_loc);
-    make_on_surface(51.43075, 5.48818,0.,10,0.,&geo_loc);
 
     n_stars=read_cat();
 
     fixstar=11767;
+    
     for(int i = 0; i < n_stars; i++)
         if (star[i].star.starnumber==fixstar)
             poolster=star[i];
-
+            
+    setref(refstar);
 
 }
 
@@ -74,6 +73,10 @@ int starclass::starlist(double start)
 {
     return 0;
 }
+
+// ****************************************************************************
+// read catalogus met sterren (is deel geselecteerd op naam en helderheid)
+// ****************************************************************************
 
 int starclass::read_cat()
 {
@@ -92,23 +95,80 @@ int starclass::read_cat()
     return n_stars;
 }
 
+// ****************************************************************************
+// set tijd en datum (sec toevoegen!)
+// ****************************************************************************
 
-int starclass::setdate(short int fy, short int fm, short int fd, short int fh, short int fmin)
+int starclass::setdate(short int fy, short int fm, short int fd, short int fh, short int fmin, short int fsec)
 {
+	tjd=0;
     y=fy;
     m=fm;
     d=fd;
     h=fh;
     min=fmin;
-    tjd=julian_date(y,m,d, h+min/60.)-UCT_offset*HOUR_PART;
+    sec=fsec;
+    tjd=julian_date(y,m,d, h+min/60.+sec/3600.)-UCT_offset*HOUR_PART;
     return 0;
 }
+
+int starclass::setdate(short int fy, short int fm, short int fd, float fh)
+{
+	tjd=0;
+    y=fy;
+    m=fm;
+    d=fd;
+    h=fh;
+    tjd=julian_date(y,m,d,h)-UCT_offset*HOUR_PART;
+    return 0;
+}
+
+// ****************************************************************************
+// set huidige locatie
+// ****************************************************************************
 
 int starclass::setLocation(double latitude, double longitude) 
 {
 	make_on_surface(latitude, longitude,0.,10,0.,&geo_loc);
 	return 0;
 }
+
+int starclass::setMagnitude(float mag){
+	magnitude = mag;
+	return 0;
+}
+
+// ****************************************************************************
+// set referentie ster voor startrail
+// ****************************************************************************
+
+int starclass::setref(int HIP)
+{
+    refstar=HIP;
+    int error = 1;
+    for(int i = 0; i < n_stars; i++)
+        if (star[i].star.starnumber==refstar)
+        { schrijfster=star[i];
+		  error = 0;
+	    }
+    return error;
+}
+
+// ****************************************************************************
+// set de belichtingstijd
+// ****************************************************************************
+
+int starclass::setExposure(double etime, int step)
+{
+	stappen = step;
+	exposuretime=etime/3600.0;
+	return 0;
+}
+
+
+// ****************************************************************************
+// bereken alle sterren helderder dan "magnitude"
+// ****************************************************************************
 
 int starclass::get_starlist()
 {
@@ -163,6 +223,10 @@ int starclass::get_starlist()
     return count;
 }
 
+// ****************************************************************************
+// ??
+// ****************************************************************************
+
 direction starclass::get_postionlist()
 {
     direction d;
@@ -187,15 +251,6 @@ direction starclass::get_postionlist()
     return d;
 }
 
-int starclass::setref(int HIP)
-{
-    refstar=HIP;
-    for(int i = 0; i < n_stars; i++)
-        if (star[i].star.starnumber==refstar)
-            schrijfster=star[i];
-    return 0;
-}
-
 direction starclass::get_position(int it)
 {
     direction d;
@@ -205,17 +260,31 @@ direction starclass::get_position(int it)
     double rar, decr;
     double stepsize=exposuretime/stappen/24.;
     double t=tjd+it*stepsize;
-
+    
     if(it < stappen)
     {
         error = app_star(t, &(schrijfster.star), accuracy, &ra, &dec);
+
+        // error=topo_star(t, deltat, &(schrijfster.star), &geo_loc, accuracy,&ra, &dec);
+        // cout << ra << " " << dec << " " << error << endl;
+
+        
         equ2hor(t,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&d.zd,&d.azd,&rar,&decr);
+
+ 
         d.azh=d.azd*24./360.;
+        
+        // cout << "geoloc " << geo_loc.latitude << endl;
+        // cout << d.azd << " " << d.zd << error << endl;
         // printf("az %9.4f, elev %6.4f\n", az, 90.0-zd);
         // printf("%f\n", t);
     }
     return d;
 }
+
+// ****************************************************************************
+// ??
+// ****************************************************************************
 
 direction starclass::get_pool()
 {
@@ -226,9 +295,10 @@ direction starclass::get_pool()
     double rar, decr;
     double pt=tjd+exposuretime/48.;
     error = app_star(pt, &(poolster.star), accuracy, &ra, &dec);
+//	error=topo_star(pt, deltat, &(poolster.star), &geo_loc, accuracy,&ra, &dec);
     equ2hor(pt,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&d.zd,&d.azd,&rar,&decr);
     d.azh=d.azd*24./360.;
-// cout << "poolster : "<< d.zd << ", " << d.azd << endl;
+    // cout << "poolster : "<< d.zd << ", " << d.azd << endl;
 
 
     // printf("az %9.4f, elev %6.4f\n", az, 90.0-zd);
@@ -236,27 +306,36 @@ direction starclass::get_pool()
     return d;
 }
 
+// ****************************************************************************
+// bereken beweging op sterpositie en dxf
+// ****************************************************************************
+
 int starclass::calc_trail()
 {
     double t;
-
+	double xmax=-10000;
+	double ymax=-10000;
+	double xmin=10000;
+	double ymin=10000;
     Quaternion<> x(0,1,0,0);
     Quaternion<> y(0,0,1,0);
     Quaternion<> z(0,0,0,1);
     direction ster_dir = get_position(stappen/2.);
     direction pool_dir=get_pool();
+
     Sphere<> s1(ster_dir.azd,90.-ster_dir.zd);
     Sphere<> s2(pool_dir.azd,90.-pool_dir.zd);
     Quaternion<> q1(s1);
     Quaternion<> q2(s2);
     R=calc_orientatie(q1, q2, &schrijverstand);
-
+    
     for(int i=0; i<stappen; i++)
     {
+		
         ster_dir=get_position(i);
-
+	    //cout << (ster_dir.azd+180.) - 360. << " " << 90.-ster_dir.zd << endl;
         s1.set(ster_dir.azd,90.-ster_dir.zd);
-        //  cout << ster.azd << "," << 90.-ster.zd << endl;
+        
         q1.set(s1);
         // cout << "q1 " << q1 << endl;
         q2=~R*q1*R;
@@ -273,22 +352,37 @@ int starclass::calc_trail()
         {
             trailsize+=t*q2.x;
         }
-        // cout << t*q2.x << "," << t*q2.y << endl;
+        cout << "c " << t*q2.x << " " << t*q2.y << endl;
+       
     }
-
+	cout << "t " << fabs(trailsize) << endl;	
+	cout << "r " << R.x << " " <<  R.y << " "  << R.z << " " <<  R.w << endl;
+      //  cout << poolster.star.starnumber << endl;
+      //  cout << schrijfster.star.starnumber << endl;
     return 0;
 }
+
+// ****************************************************************************
+// bewegingsfactor x motorexcenter
+// ****************************************************************************
 
 double starclass::factor_x()
 {
     return motor_x/focus;
 }
 
+// ****************************************************************************
+// bewegingsfactor y motorexcenter)
+// ****************************************************************************
 
 double starclass::factor_y()
 {
     return motor_y/focus;
 }
+
+// ****************************************************************************
+// bereken verplaatsing camera ??
+// ****************************************************************************
 
 int angle_desc(char *s, double d){
 	double dec;

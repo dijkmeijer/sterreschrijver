@@ -26,19 +26,22 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 # Include any dependencies generated for this target.
 include dxf/CMakeFiles/dl_dxf.dir/depend.make
@@ -51,17 +54,17 @@ include dxf/CMakeFiles/dl_dxf.dir/flags.make
 
 dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o: dxf/CMakeFiles/dl_dxf.dir/flags.make
 dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o: ../dxf/dl_dxf.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o"
-	cd /home/debian/sterreschrijver/build/dxf && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o -c /home/debian/sterreschrijver/dxf/dl_dxf.cpp
+	cd /home/valentijn/sterreschrijver/build/dxf && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o -c /home/valentijn/sterreschrijver/dxf/dl_dxf.cpp
 
 dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dl_dxf.dir/dl_dxf.cpp.i"
-	cd /home/debian/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/debian/sterreschrijver/dxf/dl_dxf.cpp > CMakeFiles/dl_dxf.dir/dl_dxf.cpp.i
+	cd /home/valentijn/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/valentijn/sterreschrijver/dxf/dl_dxf.cpp > CMakeFiles/dl_dxf.dir/dl_dxf.cpp.i
 
 dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dl_dxf.dir/dl_dxf.cpp.s"
-	cd /home/debian/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/debian/sterreschrijver/dxf/dl_dxf.cpp -o CMakeFiles/dl_dxf.dir/dl_dxf.cpp.s
+	cd /home/valentijn/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/valentijn/sterreschrijver/dxf/dl_dxf.cpp -o CMakeFiles/dl_dxf.dir/dl_dxf.cpp.s
 
 dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o.requires:
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o.requires
@@ -74,17 +77,17 @@ dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o.provides.build: dxf/CMakeFiles/dl_dxf.dir
 
 dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o: dxf/CMakeFiles/dl_dxf.dir/flags.make
 dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o: ../dxf/dl_writer_ascii.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/debian/sterreschrijver/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/valentijn/sterreschrijver/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o"
-	cd /home/debian/sterreschrijver/build/dxf && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o -c /home/debian/sterreschrijver/dxf/dl_writer_ascii.cpp
+	cd /home/valentijn/sterreschrijver/build/dxf && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o -c /home/valentijn/sterreschrijver/dxf/dl_writer_ascii.cpp
 
 dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.i"
-	cd /home/debian/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/debian/sterreschrijver/dxf/dl_writer_ascii.cpp > CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.i
+	cd /home/valentijn/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/valentijn/sterreschrijver/dxf/dl_writer_ascii.cpp > CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.i
 
 dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.s"
-	cd /home/debian/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/debian/sterreschrijver/dxf/dl_writer_ascii.cpp -o CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.s
+	cd /home/valentijn/sterreschrijver/build/dxf && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/valentijn/sterreschrijver/dxf/dl_writer_ascii.cpp -o CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.s
 
 dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o.requires:
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o.requires
@@ -108,8 +111,8 @@ dxf/libdl_dxf.a: dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o
 dxf/libdl_dxf.a: dxf/CMakeFiles/dl_dxf.dir/build.make
 dxf/libdl_dxf.a: dxf/CMakeFiles/dl_dxf.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libdl_dxf.a"
-	cd /home/debian/sterreschrijver/build/dxf && $(CMAKE_COMMAND) -P CMakeFiles/dl_dxf.dir/cmake_clean_target.cmake
-	cd /home/debian/sterreschrijver/build/dxf && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dl_dxf.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/valentijn/sterreschrijver/build/dxf && $(CMAKE_COMMAND) -P CMakeFiles/dl_dxf.dir/cmake_clean_target.cmake
+	cd /home/valentijn/sterreschrijver/build/dxf && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dl_dxf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 dxf/CMakeFiles/dl_dxf.dir/build: dxf/libdl_dxf.a
@@ -120,10 +123,10 @@ dxf/CMakeFiles/dl_dxf.dir/requires: dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cp
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/requires
 
 dxf/CMakeFiles/dl_dxf.dir/clean:
-	cd /home/debian/sterreschrijver/build/dxf && $(CMAKE_COMMAND) -P CMakeFiles/dl_dxf.dir/cmake_clean.cmake
+	cd /home/valentijn/sterreschrijver/build/dxf && $(CMAKE_COMMAND) -P CMakeFiles/dl_dxf.dir/cmake_clean.cmake
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/clean
 
 dxf/CMakeFiles/dl_dxf.dir/depend:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/debian/sterreschrijver /home/debian/sterreschrijver/dxf /home/debian/sterreschrijver/build /home/debian/sterreschrijver/build/dxf /home/debian/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/valentijn/sterreschrijver /home/valentijn/sterreschrijver/dxf /home/valentijn/sterreschrijver/build /home/valentijn/sterreschrijver/build/dxf /home/valentijn/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : dxf/CMakeFiles/dl_dxf.dir/depend
 

@@ -1,8 +1,8 @@
-/home/debian/sterreschrijver/build/conv_cat/CMakeFiles/convcat.dir
-/home/debian/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir
-/home/debian/sterreschrijver/build/dxfbezierline/CMakeFiles/dxfbezier.dir
-/home/debian/sterreschrijver/build/Novas_C3.1/CMakeFiles/novas.dir
-/home/debian/sterreschrijver/build/Novasextra/CMakeFiles/novasextra.dir
-/home/debian/sterreschrijver/build/starclass/CMakeFiles/starclass.dir
-/home/debian/sterreschrijver/build/starclass/CMakeFiles/starlist.dir
-/home/debian/sterreschrijver/build/dxfbezierline/CMakeFiles/testdxflines.dir
+/home/valentijn/sterreschrijver/build/conv_cat/CMakeFiles/convcat.dir
+/home/valentijn/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir
+/home/valentijn/sterreschrijver/build/dxfbezierline/CMakeFiles/dxfbezier.dir
+/home/valentijn/sterreschrijver/build/Novas_C3.1/CMakeFiles/novas.dir
+/home/valentijn/sterreschrijver/build/Novasextra/CMakeFiles/novasextra.dir
+/home/valentijn/sterreschrijver/build/starclass/CMakeFiles/starclass.dir
+/home/valentijn/sterreschrijver/build/starclass/CMakeFiles/starlist.dir
+/home/valentijn/sterreschrijver/build/dxfbezierline/CMakeFiles/testdxflines.dir

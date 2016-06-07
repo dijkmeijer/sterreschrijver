@@ -12,6 +12,8 @@ extern "C" {
 
 
 #define HOUR_PART 0.041666666
+
+
 class direction
 {
     public:
@@ -35,7 +37,7 @@ class starclass
 {
 public:
     /** Default constructor */
-    starclass(int stap);
+    starclass();
     /** Default destructor */
     virtual ~starclass();
     int starlist(double start); 
@@ -52,21 +54,24 @@ public:
     double trailsize;
     int n_stars;         // aantal sterren in star - lijst
     int read_cat();      // lees catalog sla records op in stars
-    on_surface geo_loc;
-    Quaternion<> R;
-    orientatie schrijverstand;
+    on_surface geo_loc;    // positie op aarde
+    Quaternion<> R;					//Quaternion.h 
+    orientatie schrijverstand;		//Quaternion.h verdraaing van de schrijver over 3 assen
     double tjd;          // tijd in "Julian date"
     short int m, d, y;   // tijd variabelen: year month, day, hour, minute
-    int h, min;
-    int setdate(short int fy, short int fm, short int fd, short int fh, short int fmin);
+    short int h, min, sec;
+    int setdate(short int fy, short int fm, short int fd, short int fh, short int fmin, short int fsec);
+    int setdate(short int fy, short int fm, short int fd, float fh);
 	int setLocation(double latitude, double longitude);
+	int setMagnitude(float mag);
+	int setExposure(double etime, int step);
     double UCT_offset;   // offset i.v.m. locale tijd
     double deltat;       // delta t offset i.v.m. verschil UTC julian Date
     double magnitude;    // maximale magnitude v.d. ster
     double bereik;       // bereik waarin de sterren worden weergeven in  graden vanaf zenith
     int get_starlist();
     int refstar;
-    int fixstar;
+    int fixstar;         // vaste ster aan firnament = poolsters
     int setref(int HIP);
     double focus;
     double motor_x;       // positie motor voor X beweging

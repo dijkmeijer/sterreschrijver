@@ -337,7 +337,7 @@ inline Quaternion<> calc_orientatie(Quaternion<> q1, Quaternion<> q2, orientatie
     de sterreschrijver heeft 3 instelbare basis assen:
     rc: rc is 0 wanneer de sterreschrijver is uitgelijnd op het noorden.
     hx &  hy
-    hy is een scharbieras die parallel loop taan RC
+    hy is een scharnieras die parallel loop taan RC
     hy = 0 in vertikale positie van de sterreschrijver (hx=0)
     hx is de tweede scharnieras staat loodrecht op hy
     hx is 0 in vertikale positie van de sterreschrijver (hy=0)

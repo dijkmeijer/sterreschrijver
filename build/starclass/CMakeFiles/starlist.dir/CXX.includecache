@@ -42,21 +42,21 @@ iostream
 math.h
 -
 
-/home/debian/sterreschrijver/starclass/starclass.h
+/home/valentijn/sterreschrijver/starclass/starclass.h
 Novasextra.h
-/home/debian/sterreschrijver/starclass/Novasextra.h
+/home/valentijn/sterreschrijver/starclass/Novasextra.h
 point.h
-/home/debian/sterreschrijver/starclass/point.h
+/home/valentijn/sterreschrijver/starclass/point.h
 Quaternion.h
-/home/debian/sterreschrijver/starclass/Quaternion.h
+/home/valentijn/sterreschrijver/starclass/Quaternion.h
 
-/home/debian/sterreschrijver/starclass/starlist.cpp
+/home/valentijn/sterreschrijver/starclass/starlist.cpp
 iostream
 -
 stdio.h
 -
 starclass.h
-/home/debian/sterreschrijver/starclass/starclass.h
+/home/valentijn/sterreschrijver/starclass/starclass.h
 ctime
 -
 boost/program_options.hpp

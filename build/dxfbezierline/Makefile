@@ -30,27 +30,30 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
-	/usr/local/bin/cmake -i .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -60,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles /home/debian/sterreschrijver/build/dxfbezierline/CMakeFiles/progress.marks
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles /home/valentijn/sterreschrijver/build/dxfbezierline/CMakeFiles/progress.marks
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/clean
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 dxfbezierline/CMakeFiles/dxfbezier.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/CMakeFiles/dxfbezier.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/CMakeFiles/dxfbezier.dir/rule
 .PHONY : dxfbezierline/CMakeFiles/dxfbezier.dir/rule
 
 # Convenience name for target.
@@ -109,12 +112,12 @@ dxfbezier: dxfbezierline/CMakeFiles/dxfbezier.dir/rule
 
 # fast build rule for target.
 dxfbezier/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/build
 .PHONY : dxfbezier/fast
 
 # Convenience name for target.
 dxfbezierline/CMakeFiles/testdxflines.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/CMakeFiles/testdxflines.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 dxfbezierline/CMakeFiles/testdxflines.dir/rule
 .PHONY : dxfbezierline/CMakeFiles/testdxflines.dir/rule
 
 # Convenience name for target.
@@ -123,7 +126,7 @@ testdxflines: dxfbezierline/CMakeFiles/testdxflines.dir/rule
 
 # fast build rule for target.
 testdxflines/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/build
 .PHONY : testdxflines/fast
 
 dxfbezierline.o: dxfbezierline.cpp.o
@@ -131,7 +134,7 @@ dxfbezierline.o: dxfbezierline.cpp.o
 
 # target to build an object file
 dxfbezierline.cpp.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.o
 .PHONY : dxfbezierline.cpp.o
 
 dxfbezierline.i: dxfbezierline.cpp.i
@@ -139,7 +142,7 @@ dxfbezierline.i: dxfbezierline.cpp.i
 
 # target to preprocess a source file
 dxfbezierline.cpp.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.i
 .PHONY : dxfbezierline.cpp.i
 
 dxfbezierline.s: dxfbezierline.cpp.s
@@ -147,7 +150,7 @@ dxfbezierline.s: dxfbezierline.cpp.s
 
 # target to generate assembly for a file
 dxfbezierline.cpp.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/dxfbezier.dir/build.make dxfbezierline/CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.s
 .PHONY : dxfbezierline.cpp.s
 
 testdxflines.o: testdxflines.cpp.o
@@ -155,7 +158,7 @@ testdxflines.o: testdxflines.cpp.o
 
 # target to build an object file
 testdxflines.cpp.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.o
 .PHONY : testdxflines.cpp.o
 
 testdxflines.i: testdxflines.cpp.i
@@ -163,7 +166,7 @@ testdxflines.i: testdxflines.cpp.i
 
 # target to preprocess a source file
 testdxflines.cpp.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.i
 .PHONY : testdxflines.cpp.i
 
 testdxflines.s: testdxflines.cpp.s
@@ -171,7 +174,7 @@ testdxflines.s: testdxflines.cpp.s
 
 # target to generate assembly for a file
 testdxflines.cpp.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f dxfbezierline/CMakeFiles/testdxflines.dir/build.make dxfbezierline/CMakeFiles/testdxflines.dir/testdxflines.cpp.s
 .PHONY : testdxflines.cpp.s
 
 # Help Target
@@ -201,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

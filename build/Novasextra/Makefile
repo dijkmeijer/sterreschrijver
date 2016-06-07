@@ -30,27 +30,30 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
-	/usr/local/bin/cmake -i .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -60,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles /home/debian/sterreschrijver/build/Novasextra/CMakeFiles/progress.marks
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles /home/valentijn/sterreschrijver/build/Novasextra/CMakeFiles/progress.marks
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/clean
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Novasextra/CMakeFiles/novasextra.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/CMakeFiles/novasextra.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novasextra/CMakeFiles/novasextra.dir/rule
 .PHONY : Novasextra/CMakeFiles/novasextra.dir/rule
 
 # Convenience name for target.
@@ -109,7 +112,7 @@ novasextra: Novasextra/CMakeFiles/novasextra.dir/rule
 
 # fast build rule for target.
 novasextra/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/build
 .PHONY : novasextra/fast
 
 Novasextra.o: Novasextra.c.o
@@ -117,7 +120,7 @@ Novasextra.o: Novasextra.c.o
 
 # target to build an object file
 Novasextra.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.o
 .PHONY : Novasextra.c.o
 
 Novasextra.i: Novasextra.c.i
@@ -125,7 +128,7 @@ Novasextra.i: Novasextra.c.i
 
 # target to preprocess a source file
 Novasextra.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.i
 .PHONY : Novasextra.c.i
 
 Novasextra.s: Novasextra.c.s
@@ -133,7 +136,7 @@ Novasextra.s: Novasextra.c.s
 
 # target to generate assembly for a file
 Novasextra.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novasextra/CMakeFiles/novasextra.dir/build.make Novasextra/CMakeFiles/novasextra.dir/Novasextra.c.s
 .PHONY : Novasextra.c.s
 
 # Help Target
@@ -159,6 +162,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

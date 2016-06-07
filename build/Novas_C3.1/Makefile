@@ -30,27 +30,30 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
+# The program to use to edit the cache.
+CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/debian/sterreschrijver
+CMAKE_SOURCE_DIR = /home/valentijn/sterreschrijver
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/debian/sterreschrijver/build
+CMAKE_BINARY_DIR = /home/valentijn/sterreschrijver/build
 
 #=============================================================================
 # Targets provided globally by CMake.
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
-	/usr/local/bin/cmake -i .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -60,7 +63,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -69,14 +72,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles /home/debian/sterreschrijver/build/Novas_C3.1/CMakeFiles/progress.marks
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/debian/sterreschrijver/build/CMakeFiles 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles /home/valentijn/sterreschrijver/build/Novas_C3.1/CMakeFiles/progress.marks
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/valentijn/sterreschrijver/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/clean
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,22 +88,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/preinstall
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Novas_C3.1/CMakeFiles/novas.dir/rule:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/CMakeFiles/novas.dir/rule
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f CMakeFiles/Makefile2 Novas_C3.1/CMakeFiles/novas.dir/rule
 .PHONY : Novas_C3.1/CMakeFiles/novas.dir/rule
 
 # Convenience name for target.
@@ -109,7 +112,7 @@ novas: Novas_C3.1/CMakeFiles/novas.dir/rule
 
 # fast build rule for target.
 novas/fast:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/build
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/build
 .PHONY : novas/fast
 
 cio_file.o: cio_file.c.o
@@ -117,7 +120,7 @@ cio_file.o: cio_file.c.o
 
 # target to build an object file
 cio_file.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/cio_file.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/cio_file.c.o
 .PHONY : cio_file.c.o
 
 cio_file.i: cio_file.c.i
@@ -125,7 +128,7 @@ cio_file.i: cio_file.c.i
 
 # target to preprocess a source file
 cio_file.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/cio_file.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/cio_file.c.i
 .PHONY : cio_file.c.i
 
 cio_file.s: cio_file.c.s
@@ -133,7 +136,7 @@ cio_file.s: cio_file.c.s
 
 # target to generate assembly for a file
 cio_file.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/cio_file.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/cio_file.c.s
 .PHONY : cio_file.c.s
 
 eph_manager.o: eph_manager.c.o
@@ -141,7 +144,7 @@ eph_manager.o: eph_manager.c.o
 
 # target to build an object file
 eph_manager.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/eph_manager.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/eph_manager.c.o
 .PHONY : eph_manager.c.o
 
 eph_manager.i: eph_manager.c.i
@@ -149,7 +152,7 @@ eph_manager.i: eph_manager.c.i
 
 # target to preprocess a source file
 eph_manager.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/eph_manager.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/eph_manager.c.i
 .PHONY : eph_manager.c.i
 
 eph_manager.s: eph_manager.c.s
@@ -157,7 +160,7 @@ eph_manager.s: eph_manager.c.s
 
 # target to generate assembly for a file
 eph_manager.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/eph_manager.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/eph_manager.c.s
 .PHONY : eph_manager.c.s
 
 novas.o: novas.c.o
@@ -165,7 +168,7 @@ novas.o: novas.c.o
 
 # target to build an object file
 novas.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novas.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novas.c.o
 .PHONY : novas.c.o
 
 novas.i: novas.c.i
@@ -173,7 +176,7 @@ novas.i: novas.c.i
 
 # target to preprocess a source file
 novas.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novas.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novas.c.i
 .PHONY : novas.c.i
 
 novas.s: novas.c.s
@@ -181,7 +184,7 @@ novas.s: novas.c.s
 
 # target to generate assembly for a file
 novas.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novas.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novas.c.s
 .PHONY : novas.c.s
 
 novascon.o: novascon.c.o
@@ -189,7 +192,7 @@ novascon.o: novascon.c.o
 
 # target to build an object file
 novascon.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novascon.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novascon.c.o
 .PHONY : novascon.c.o
 
 novascon.i: novascon.c.i
@@ -197,7 +200,7 @@ novascon.i: novascon.c.i
 
 # target to preprocess a source file
 novascon.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novascon.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novascon.c.i
 .PHONY : novascon.c.i
 
 novascon.s: novascon.c.s
@@ -205,7 +208,7 @@ novascon.s: novascon.c.s
 
 # target to generate assembly for a file
 novascon.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novascon.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/novascon.c.s
 .PHONY : novascon.c.s
 
 nutation.o: nutation.c.o
@@ -213,7 +216,7 @@ nutation.o: nutation.c.o
 
 # target to build an object file
 nutation.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/nutation.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/nutation.c.o
 .PHONY : nutation.c.o
 
 nutation.i: nutation.c.i
@@ -221,7 +224,7 @@ nutation.i: nutation.c.i
 
 # target to preprocess a source file
 nutation.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/nutation.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/nutation.c.i
 .PHONY : nutation.c.i
 
 nutation.s: nutation.c.s
@@ -229,7 +232,7 @@ nutation.s: nutation.c.s
 
 # target to generate assembly for a file
 nutation.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/nutation.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/nutation.c.s
 .PHONY : nutation.c.s
 
 readeph0.o: readeph0.c.o
@@ -237,7 +240,7 @@ readeph0.o: readeph0.c.o
 
 # target to build an object file
 readeph0.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/readeph0.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/readeph0.c.o
 .PHONY : readeph0.c.o
 
 readeph0.i: readeph0.c.i
@@ -245,7 +248,7 @@ readeph0.i: readeph0.c.i
 
 # target to preprocess a source file
 readeph0.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/readeph0.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/readeph0.c.i
 .PHONY : readeph0.c.i
 
 readeph0.s: readeph0.c.s
@@ -253,7 +256,7 @@ readeph0.s: readeph0.c.s
 
 # target to generate assembly for a file
 readeph0.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/readeph0.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/readeph0.c.s
 .PHONY : readeph0.c.s
 
 solsys1.o: solsys1.c.o
@@ -261,7 +264,7 @@ solsys1.o: solsys1.c.o
 
 # target to build an object file
 solsys1.c.o:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/solsys1.c.o
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/solsys1.c.o
 .PHONY : solsys1.c.o
 
 solsys1.i: solsys1.c.i
@@ -269,7 +272,7 @@ solsys1.i: solsys1.c.i
 
 # target to preprocess a source file
 solsys1.c.i:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/solsys1.c.i
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/solsys1.c.i
 .PHONY : solsys1.c.i
 
 solsys1.s: solsys1.c.s
@@ -277,7 +280,7 @@ solsys1.s: solsys1.c.s
 
 # target to generate assembly for a file
 solsys1.c.s:
-	cd /home/debian/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/solsys1.c.s
+	cd /home/valentijn/sterreschrijver/build && $(MAKE) -f Novas_C3.1/CMakeFiles/novas.dir/build.make Novas_C3.1/CMakeFiles/novas.dir/solsys1.c.s
 .PHONY : solsys1.c.s
 
 # Help Target
@@ -321,6 +324,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/debian/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/valentijn/sterreschrijver/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -9,7 +9,7 @@ starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/../Novas_C3.1/s
 starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/../Novasextra/Novasextra.h
 starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/../include/point.h
 starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/../quat/Quaternion.h
-starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/../Novasextra/Novasextra.h
+starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../Novasextra/Novasextra.h
 starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/starclass.cpp
 starclass/CMakeFiles/starclass.dir/starclass.cpp.o: ../starclass/starclass.h
 

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libdxfbezier.a  CMakeFiles/dxfbezier.dir/dxfbezierline.cpp.o
+/usr/bin/ranlib libdxfbezier.a

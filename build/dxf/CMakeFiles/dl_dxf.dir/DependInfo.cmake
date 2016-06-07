@@ -4,8 +4,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/debian/sterreschrijver/dxf/dl_dxf.cpp" "/home/debian/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o"
-  "/home/debian/sterreschrijver/dxf/dl_writer_ascii.cpp" "/home/debian/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o"
+  "/home/valentijn/sterreschrijver/dxf/dl_dxf.cpp" "/home/valentijn/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o"
+  "/home/valentijn/sterreschrijver/dxf/dl_writer_ascii.cpp" "/home/valentijn/sterreschrijver/build/dxf/CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

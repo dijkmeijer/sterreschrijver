@@ -76,9 +76,9 @@ string
 
 ../dxfbezierline/../include/point.h
 
-/home/debian/sterreschrijver/dxfbezierline/dxfbezierline.cpp
+/home/valentijn/sterreschrijver/dxfbezierline/dxfbezierline.cpp
 dxfbezierline.h
-/home/debian/sterreschrijver/dxfbezierline/dxfbezierline.h
+/home/valentijn/sterreschrijver/dxfbezierline/dxfbezierline.h
 iostream
 -
 fstream
@@ -88,15 +88,15 @@ stdio.h
 math.h
 -
 dxfbezierline.h
-/home/debian/sterreschrijver/dxfbezierline/dxfbezierline.h
+/home/valentijn/sterreschrijver/dxfbezierline/dxfbezierline.h
 
-/home/debian/sterreschrijver/dxfbezierline/dxfbezierline.h
+/home/valentijn/sterreschrijver/dxfbezierline/dxfbezierline.h
 dl_creationadapter.h
-/home/debian/sterreschrijver/dxfbezierline/dl_creationadapter.h
+/home/valentijn/sterreschrijver/dxfbezierline/dl_creationadapter.h
 dl_dxf.h
-/home/debian/sterreschrijver/dxfbezierline/dl_dxf.h
+/home/valentijn/sterreschrijver/dxfbezierline/dl_dxf.h
 list
 -
 point.h
-/home/debian/sterreschrijver/dxfbezierline/point.h
+/home/valentijn/sterreschrijver/dxfbezierline/point.h
 
