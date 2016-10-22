@@ -8,10 +8,12 @@
 #define NO_OUTPUT 0
 #define LIST 1
 #define TRAIL 2
-#define SETYEAR 8
-#define SETMONTH 4
-#define SETDAY 2
-#define SETHOUR 1
+#define SETYEAR 32
+#define SETMONTH 16
+#define SETDAY 8
+#define SETHOUR 4
+#define SETMIN 2
+#define SETSEC 1
 
 using namespace std;
 starclass *star;	
@@ -60,15 +62,21 @@ int main(int argc, char **argv){
 		boost::program_options::value<int>(),
          "set day")
       ("hour,H", 
-		boost::program_options::value<float>(),
-         "set hour; minutes en seconds as decimals")
+		boost::program_options::value<int>(),
+         "set hour")
+      ("min,i", 
+		boost::program_options::value<int>(),
+         "set minutes")
+      ("sec,s", 
+		boost::program_options::value<int>(),
+         "set seconds")
       ("utc,u", 
 		boost::program_options::value<float>(),
          "set UTC time")
       ("angle,a",         
 		boost::program_options::value<float>(),
          "angle from zenith for list of visible stars")
-      ("star,s", 
+      ("star,S", 
 		boost::program_options::value<int>(),
          "set star for startrail")
       ("step,p",         
@@ -144,10 +152,25 @@ int main(int argc, char **argv){
   else itime.tm_mday=1;
    if (m.count("hour"))
   {
-      itime.tm_hour= m["hour"].as<float>();
+      itime.tm_hour= m["hour"].as<int>();
       timeset = timeset | SETHOUR;
   }
   else itime.tm_hour=0;
+  
+  
+  if (m.count("min"))
+  {
+      itime.tm_min= m["min"].as<int>();
+      timeset = timeset | SETMIN;
+  }
+  else itime.tm_min=0;
+
+  if (m.count("sec"))
+  {
+      itime.tm_sec= m["sec"].as<int>();
+      timeset = timeset | SETSEC;
+  }
+  else itime.tm_sec=0;
   
   if (m.count("magnitude"))
   {
@@ -190,11 +213,11 @@ int main(int argc, char **argv){
 				  (short int)ltm->tm_min,
 				  (short int)ltm->tm_sec);
 	*/
-	cout << "timeset = " << timeset << endl;
+	// cout << "timeset = " << timeset << endl;
 	if(timeset > 0) {
-	if (timeset == SETYEAR | SETMONTH | SETDAY | SETHOUR) {
+	if (timeset == SETYEAR | SETMONTH | SETDAY | SETHOUR | SETMIN | SETSEC) {
 //		cout << "OK" << endl;
-		star->setdate(itime.tm_year, itime.tm_mon, itime.tm_mday, itime.tm_hour);
+		star->setdate(itime.tm_year, itime.tm_mon, itime.tm_mday, itime.tm_hour, itime.tm_min, itime.tm_sec);
 	} 
 	else {
 		cout << "year, month, day and hour" << endl;
@@ -239,12 +262,11 @@ int main(int argc, char **argv){
 		//cout << star->star_list[i].az << " " << star->star_list[i].zd << endl;
 		x=50.-sin((star->star_list[i].az)*3.14/180.) * star->star_list[i].zd ;
 		y=50.-cos((star->star_list[i].az)*3.14/180.) * star->star_list[i].zd;
-		cout << "<div style=\"position: absolute; top: " <<y << "%;  left: " << x << "%; \">" << star->star_list[i].starname << " </div>" << endl;
-		//cout << "<a href=\"info.php?x="<<x-50<<"&y="<<y-50<<"\"><img src=\"ster.png\" height=4% width=4% style=\"position: absolute; top: " << y-2 << "%;  left: " << x-2 << "%; \"></a>"<< endl;
-		cout << "<img id=\"star\" x="<<x-50<<" y="<<y-50<<" src=\"ster.png\" height=4% width=4% style=\"position: absolute; top: " << y-2 << "%;  left: " << x-2 << "%; \">"<< endl;
+		cout << "<div class=StarLabel id=\"star\" x="<<x-50<<" y="<<y-50<<" style=\"position: absolute; top: " << y << "%;  left: " << x << "%; \">" << star->star_list[i].starname << "</div>" << endl;
+		cout << "<img id=\"star\" x="<<x-50<<" y="<<y-50<<" src=\"ster.png\" class=StarImg style=\"position: absolute; top: " << y-3 << "%;  left: " << x-3 << "%; \">"<< endl;
 	}
 	
-	cout << "</div>";
+	// cout << "</div>";
 	}
 // ++++++++++++++++++++  output trail +++++++++++++++++++++++++++++++++++++++
 	if (outputtype == TRAIL)
