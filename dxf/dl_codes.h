@@ -68,6 +68,7 @@ class DL_Codes {
 public:
     /**
      * Standard DXF colors.
+
      */
     enum color {
         black = 250,
@@ -539,4 +540,3 @@ const double dxfColors[][3] = {
 #define DL_PCS_TRANS_CODE      3
 
 #endif
-
