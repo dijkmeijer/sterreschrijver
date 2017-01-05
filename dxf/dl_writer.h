@@ -42,9 +42,6 @@
 #include "dl_attributes.h"
 #include "dl_codes.h"
 
-
-
-
 /**
  * Defines interface for writing low level DXF constructs to
  * a file. Implementation is defined in derived classes that write
