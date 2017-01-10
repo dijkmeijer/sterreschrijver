@@ -46,10 +46,10 @@ starclass::starclass()
     if (error==1) {
       printf("JPLEPH niet gevonden\n"); exit(1); }
 
-    printf("JPLEPH gelezen\n");
+    printf("JPLEPH geladen\n");
 
     n_stars = read_cat();
-    printf("cat gelezen\n");
+    printf("cat geladen\n");
 
     fixstar=11767;
 
@@ -82,10 +82,9 @@ int starclass::starlist(double start)
 int starclass::read_cat()
 {
   FILE *fp;
-  printf("ḧierin?");
-    fp=fopen("cat_entry.cat", "rb");
+    fp=fopen("zet \"cat_entry.cat\" in pwd", "rb");
     if(fp==NULL)
-      {printf("geen cat_entry.cat\n");
+      {printf("cat_entry.cat  niet gevonden\n");
       exit(1);
     }
     fseek( fp, 0L, SEEK_END );
