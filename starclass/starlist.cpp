@@ -16,7 +16,7 @@
 #define SETSEC 1
 
 using namespace std;
-starclass *star;	
+starclass *star;
 double exposuretime;
 int step;
 int refstar;
@@ -37,54 +37,54 @@ int main(int argc, char **argv){
     d.add_options()
       ("help,h",
         "produce this help message")
-      ("output,o",       
+      ("output,o",
 	     boost::program_options::value<string>(),
          "Output of program \n'list' starlist or \n'trail' for startrail")
       ("latitude,m",
          boost::program_options::value<float>(),
-         "Latitude of location (meridian) in gg.dddddd \nnorth positive, south negative")      
+         "Latitude of location (meridian) in gg.dddddd \nnorth positive, south negative")
 	  ("longitude,l",
          boost::program_options::value<float>(),
          "Longitude of location in gg.dddddd\n0.0 < Lon < 360.0")
-      ("magnitude,v", 
+      ("magnitude,v",
 		boost::program_options::value<float>(),
          "minimal magnitude of the stars")
-      ("time,t", 
+      ("time,t",
 		boost::program_options::value<float>(),
          "set time and date in Julian UTC")
-      ("year,Y", 
+      ("year,Y",
 		boost::program_options::value<int>(),
          "set year")
-      ("month,M", 
+      ("month,M",
 		boost::program_options::value<int>(),
          "set month")
-      ("day,D", 
+      ("day,D",
 		boost::program_options::value<int>(),
          "set day")
-      ("hour,H", 
+      ("hour,H",
 		boost::program_options::value<int>(),
          "set hour")
-      ("min,i", 
+      ("min,i",
 		boost::program_options::value<int>(),
          "set minutes")
-      ("sec,s", 
+      ("sec,s",
 		boost::program_options::value<int>(),
          "set seconds")
-      ("utc,u", 
+      ("utc,u",
 		boost::program_options::value<float>(),
          "set UTC time")
-      ("angle,a",         
+      ("angle,a",
 		boost::program_options::value<float>(),
          "angle from zenith for list of visible stars")
-      ("star,S", 
+      ("star,S",
 		boost::program_options::value<int>(),
          "set star for startrail")
-      ("step,p",         
+      ("step,p",
 	     boost::program_options::value<int>(),
          "set number of steps")
-      ("exposure,e",         
+      ("exposure,e",
 	     boost::program_options::value<double>(),
-         "set exposuretime in seconds")      
+         "set exposuretime in seconds")
       ;
 
   boost::program_options::variables_map m;
@@ -104,7 +104,7 @@ int main(int argc, char **argv){
  if (m.count("output"))
   {
       string SO = m["output"].as<string>();
-      
+
       if (SO == "list") outputtype = LIST;
       if (SO == "trail") outputtype = TRAIL;
   }
@@ -113,16 +113,16 @@ int main(int argc, char **argv){
   if (m.count("latitude"))
   {
       latitude = m["latitude"].as<float>();
-      
-  } 
+
+  }
   else latitude = 51.43075;
-  
+
    if (m.count("longitude"))
   {
-      longitude = m["longitude"].as<float>();     
+      longitude = m["longitude"].as<float>();
   }
   else longitude = 5.48818;
-  
+
    if (m.count("utc"))
   {
       utime = m["utc"].as<float>();
@@ -131,7 +131,7 @@ int main(int argc, char **argv){
    time_t now = time(0);
    tm *ltm = localtime(&now);
 	}
-	
+
    if (m.count("year"))
   {
       itime.tm_year = m["year"].as<int>();
@@ -148,7 +148,7 @@ int main(int argc, char **argv){
   {
       itime.tm_mday = m["day"].as<int>();
       timeset = timeset | SETDAY;
-  }   
+  }
   else itime.tm_mday=1;
    if (m.count("hour"))
   {
@@ -156,8 +156,8 @@ int main(int argc, char **argv){
       timeset = timeset | SETHOUR;
   }
   else itime.tm_hour=0;
-  
-  
+
+
   if (m.count("min"))
   {
       itime.tm_min= m["min"].as<int>();
@@ -171,45 +171,45 @@ int main(int argc, char **argv){
       timeset = timeset | SETSEC;
   }
   else itime.tm_sec=0;
-  
+
   if (m.count("magnitude"))
   {
       magnitude = m["magnitude"].as<float>();
   }
   else magnitude = 3;
-    
+
   if (m.count("star"))
   {
      refstar = m["star"].as<int>();
   }
-  else refstar = 24436;  
-  
+  else refstar = 24436;
+
   if (m.count("exposure"))
   {
       exposuretime = m["exposure"].as<double>();
   }
-  else exposuretime =3600.0;  
-  
+  else exposuretime =3600.0;
+
   if (m.count("step"))
   {
        step = m["step"].as<int>();
   }
   else  step = 3600;
-  
+
 // end BOOST header   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  
-  
+
+
   if (outputtype != NO_OUTPUT){
-	
-  
+
+
 	int count;
 	char s_az[20], s_hd[20];
 	star = new starclass();
 	time_t now = time(0);
-	/* star->setdate(ltm->tm_year+1900, 
-				  (short int)ltm->tm_mon+1, 
+	/* star->setdate(ltm->tm_year+1900,
+				  (short int)ltm->tm_mon+1,
 				  (short int)ltm->tm_mday,
-				  (short int)ltm->tm_hour, 
+				  (short int)ltm->tm_hour,
 				  (short int)ltm->tm_min,
 				  (short int)ltm->tm_sec);
 	*/
@@ -218,32 +218,32 @@ int main(int argc, char **argv){
 	if (timeset == SETYEAR | SETMONTH | SETDAY | SETHOUR | SETMIN | SETSEC) {
 //		cout << "OK" << endl;
 		star->setdate(itime.tm_year, itime.tm_mon, itime.tm_mday, itime.tm_hour, itime.tm_min, itime.tm_sec);
-	} 
+	}
 	else {
 		cout << "year, month, day and hour" << endl;
 		return 1;
 	}
 }
-  
-  
- 
- 
+
+
+
+
  	star->setLocation(latitude, longitude);
 	star->setMagnitude(magnitude);
-	star->setExposure(exposuretime, step);		
+	star->setExposure(exposuretime, step);
 	if	(star->setref(refstar)){
 		cout << "Geen ster in de catalogus" << endl;
 		return 1;
 	}
 	//  cout << ltm->tm_year+1900 << " " << ltm->tm_mon+1 << " " << ltm->tm_mday << " " <<  ltm->tm_hour << " " << ltm->tm_min << endl;
-	
-	
+
+
 	/*
 	for(int i =0; i < count; i++) {
 
-		printf("%f\t%f\t%d\t%s\n",star->star_list[i].az, 
+		printf("%f\t%f\t%d\t%s\n",star->star_list[i].az,
 								  star->star_list[i].hd,
-								  star->star_list[i].starnumber, 
+								  star->star_list[i].starnumber,
 								  star->star_list[i].starname);
 	}
 	*/
@@ -265,7 +265,7 @@ int main(int argc, char **argv){
 		cout << "<div class=StarLabel id=\"star\" x="<<x-50<<" y="<<y-50<<" style=\"position: absolute; top: " << y << "%;  left: " << x << "%; \">" << star->star_list[i].starname << "</div>" << endl;
 		cout << "<img id=\"star\" x="<<x-50<<" y="<<y-50<<" src=\"ster.png\" class=StarImg style=\"position: absolute; top: " << y-3 << "%;  left: " << x-3 << "%; \">"<< endl;
 	}
-	
+
 	// cout << "</div>";
 	}
 // ++++++++++++++++++++  output trail +++++++++++++++++++++++++++++++++++++++

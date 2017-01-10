@@ -21,8 +21,8 @@ starclass::starclass()
     setdate(2016, 05, 12, 04 , 12, 0);  // yyyy mm dd hh mm
     magnitude = 3.;    	// maximale magnitude v.d. ster
     bereik = 40.;       // hoek in graden tov zenith
-    refstar=32349;		// referentie ster default  
-    refstar=24436;		// referentie ster default  
+    refstar=32349;		// referentie ster default
+    refstar=24436;		// referentie ster default
     stappen=3600; 		// 3600 = 1 uur;
     focus=135;			//lens brandpunt
     motor_x=80.;   		// positie motor voor X beweging
@@ -35,27 +35,28 @@ starclass::starclass()
     short int error = 0;
 
     double jd_beg, jd_end;
-    
-   
-   
+
+
+
     // ********* Open the JPL ephemeris file.
- 
-    try{
-		error = ephem_open ((char*)"JPLEPH", &jd_beg,&jd_end,&de_num);}
-	catch(int e)
-    {
-           printf ("Error %d from ephem_open\n", error);
-    }
 
 
-    n_stars=read_cat();
+		error = ephem_open ((char*)"JPLEPH", &jd_beg,&jd_end,&de_num);
+    printf("error = %d\n", error);
+    if (error==1) {
+      printf("JPLEPH niet gevonden\n"); exit(1); }
+
+    printf("JPLEPH gelezen\n");
+
+    n_stars = read_cat();
+    printf("cat gelezen\n");
 
     fixstar=11767;
-    
+
     for(int i = 0; i < n_stars; i++)
         if (star[i].star.starnumber==fixstar)
             poolster=star[i];
-            
+
     setref(refstar);
 
 }
@@ -80,12 +81,13 @@ int starclass::starlist(double start)
 
 int starclass::read_cat()
 {
-    FILE *fp;
-	try {
+  FILE *fp;
+  printf("ḧierin?");
     fp=fopen("cat_entry.cat", "rb");
-	}
-
-	catch(int e){}
+    if(fp==NULL)
+      {printf("geen cat_entry.cat\n");
+      exit(1);
+    }
     fseek( fp, 0L, SEEK_END );
     n_stars=ftell(fp)/sizeof(star_rec);
     rewind(fp);
@@ -127,7 +129,7 @@ int starclass::setdate(short int fy, short int fm, short int fd, float fh)
 // set huidige locatie
 // ****************************************************************************
 
-int starclass::setLocation(double latitude, double longitude) 
+int starclass::setLocation(double latitude, double longitude)
 {
 	make_on_surface(latitude, longitude,0.,10,0.,&geo_loc);
 	return 0;
@@ -187,16 +189,16 @@ int starclass::get_starlist()
 	}
 	star_list=(star_list_rec*)malloc(count*sizeof(star_list_rec)); // reserveer ruimte voor alle sterren binnen specificatie
 	count=0;
-        
+
 	for(int i = 0; i < n_stars; i++)
     {
 		/*cout << star[i].star.starnumber << " " <<
-         		star[i].star.starname  << " " <<  
-         		star[i].star.ra  << " " <<  
-         		star[i].star.dec  << " " <<  
-         		star[i].star.promora  << " " <<  
-         		star[i].star.promodec  << " " << 
-         		star[i].star.parallax  << " " <<  
+         		star[i].star.starname  << " " <<
+         		star[i].star.ra  << " " <<
+         		star[i].star.dec  << " " <<
+         		star[i].star.promora  << " " <<
+         		star[i].star.promodec  << " " <<
+         		star[i].star.parallax  << " " <<
 				star[i].Vmag << endl;
 		*/
         error = app_star(tjd, &(star[i].star), accuracy, &ra, &dec);
@@ -208,7 +210,7 @@ int starclass::get_starlist()
 				star_list[count].hd = 90.-zd;
 				strcpy(star_list[count].starname, star[i].star.starname);
 				star_list[count].starnumber = star[i].star.starnumber;
-				
+
 				/*cout << star_list[count].az << "\t"
 				     << star_list[count].zd << "\t"
 				     << star_list[count].hd << "\t"
@@ -216,8 +218,8 @@ int starclass::get_starlist()
 				     << star_list[count].starnumber << endl;
 				*/
 				count++;
-				
-							
+
+
         }
     }
     return count;
@@ -260,7 +262,7 @@ direction starclass::get_position(int it)
     double rar, decr;
     double stepsize=exposuretime/stappen/24.;
     double t=tjd+it*stepsize;
-    
+
     if(it < stappen)
     {
         error = app_star(t, &(schrijfster.star), accuracy, &ra, &dec);
@@ -268,12 +270,12 @@ direction starclass::get_position(int it)
         // error=topo_star(t, deltat, &(schrijfster.star), &geo_loc, accuracy,&ra, &dec);
         // cout << ra << " " << dec << " " << error << endl;
 
-        
+
         equ2hor(t,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&d.zd,&d.azd,&rar,&decr);
 
- 
+
         d.azh=d.azd*24./360.;
-        
+
         // cout << "geoloc " << geo_loc.latitude << endl;
         // cout << d.azd << " " << d.zd << error << endl;
         // printf("az %9.4f, elev %6.4f\n", az, 90.0-zd);
@@ -328,14 +330,14 @@ int starclass::calc_trail()
     Quaternion<> q1(s1);
     Quaternion<> q2(s2);
     R=calc_orientatie(q1, q2, &schrijverstand);
-    
+
     for(int i=0; i<stappen; i++)
     {
-		
+
         ster_dir=get_position(i);
 	    //cout << (ster_dir.azd+180.) - 360. << " " << 90.-ster_dir.zd << endl;
         s1.set(ster_dir.azd,90.-ster_dir.zd);
-        
+
         q1.set(s1);
         // cout << "q1 " << q1 << endl;
         q2=~R*q1*R;
@@ -353,9 +355,9 @@ int starclass::calc_trail()
             trailsize+=t*q2.x;
         }
         cout << "c " << t*q2.x << " " << t*q2.y << endl;
-       
+
     }
-	cout << "t " << fabs(trailsize) << endl;	
+	cout << "t " << fabs(trailsize) << endl;
 	cout << "r " << R.x << " " <<  R.y << " "  << R.z << " " <<  R.w << endl;
       //  cout << poolster.star.starnumber << endl;
       //  cout << schrijfster.star.starnumber << endl;
