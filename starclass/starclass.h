@@ -13,7 +13,6 @@ extern "C" {
 
 #define HOUR_PART 0.041666666
 
-
 class direction
 {
     public:
@@ -40,13 +39,13 @@ public:
     starclass();
     /** Default destructor */
     virtual ~starclass();
-    int starlist(double start); 
+    int starlist(double start);
     double exposuretime; // belichtingstijd
     int stappen;         // aantalpunten in trail
-	char *starcat_file;
-	char *ephemeris_file; 
+	  char *starcat_file;
+	  char *ephemeris_file;
     star_rec *star;      // lijst van alle benoemde sterren
-	star_list_rec *star_list;  // lijst van sterre binnen zichtbare deel van de hemel.
+	  star_list_rec *star_list;  // lijst van sterre binnen zichtbare deel van de hemel.
     star_rec schrijfster; // ster om te schrijven
     star_rec poolster;   // "vaste" referentie naar noorden
 
@@ -55,16 +54,17 @@ public:
     int n_stars;         // aantal sterren in star - lijst
     int read_cat();      // lees catalog sla records op in stars
     on_surface geo_loc;    // positie op aarde
-    Quaternion<> R;					//Quaternion.h 
+    Quaternion<> R;					//Quaternion.h
     orientatie schrijverstand;		//Quaternion.h verdraaing van de schrijver over 3 assen
     double tjd;          // tijd in "Julian date"
     short int m, d, y;   // tijd variabelen: year month, day, hour, minute
     short int h, min, sec;
     int setdate(short int fy, short int fm, short int fd, short int fh, short int fmin, short int fsec);
     int setdate(short int fy, short int fm, short int fd, float fh);
-	int setLocation(double latitude, double longitude);
-	int setMagnitude(float mag);
-	int setExposure(double etime, int step);
+	  int setLocation(double latitude, double longitude);
+	  int setMagnitude(float mag);
+	  int setExposure(double etime, int step);
+    int setBereik(double _bereik);
     double UCT_offset;   // offset i.v.m. locale tijd
     double deltat;       // delta t offset i.v.m. verschil UTC julian Date
     double magnitude;    // maximale magnitude v.d. ster

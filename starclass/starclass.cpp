@@ -166,7 +166,10 @@ int starclass::setExposure(double etime, int step)
 	return 0;
 }
 
-
+int starclass::setBereik(double _bereik){
+  bereik = _bereik;
+  return bereik;
+}
 // ****************************************************************************
 // bereken alle sterren helderder dan "magnitude"
 // ****************************************************************************

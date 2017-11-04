@@ -58,12 +58,12 @@ int main(int argc, char** argv) {
     d.add_options()
       ("help,h",
         "produce this help message")
-      ("file,f",       
+      ("file,f",
 	     boost::program_options::value<string>()->required(),
          "Set name of DXF file to be converted  ")
       ("textlength,l",
          boost::program_options::value<float>(),
-         "Set length of text")      
+         "Set length of text")
 	  ("steps,s",
          boost::program_options::value<int>(),
          "Set number of steps in text");
@@ -90,23 +90,23 @@ int main(int argc, char** argv) {
   if (m.count("textlength"))
   {
      textlength = m["textlength"].as<float>();
-      
-  } 
+
+  }
   else textlength = 10.;
-  
+
    if (m.count("steps"))
   {
-      steps = m["steps"].as<int>();     
+      steps = m["steps"].as<int>();
   }
   else steps = 3600;
- 
-  
+
+
 // end BOOST header   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 // main function   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    
+
     ConvertDXFBezier();
 
     return 0;
@@ -125,7 +125,7 @@ void usage() {
 void ConvertDXFBezier() {
     // Load DXF file into memory:
     //std::cout << "Reading file " << file << "...\n";
-    
+
     dxfbezier2linesClass* creationClass = new dxfbezier2linesClass((string) f_name, steps, textlength);
 
     //    creationClass -> verschuif(file);

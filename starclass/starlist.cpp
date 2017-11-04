@@ -3,15 +3,17 @@
 #include "starclass.h"
 #include <ctime>
 #include <boost/program_options.hpp>
+#include <iomanip>
 
 
 #define NO_OUTPUT 0
 #define LIST 1
 #define TRAIL 2
+#define SIM 3
 #define SETYEAR 32
 #define SETMONTH 16
 #define SETDAY 8
-#define SETHOUR 4
+#define SETHOUR  	4
 #define SETMIN 2
 #define SETSEC 1
 
@@ -24,7 +26,10 @@ float utime;
 struct tm itime;
 int timeset;
 
+float bereik;
+direction tmpstar;
 int outputtype;
+tm ltm;
 
 int main(int argc, char **argv){
 	float latitude, longitude, magnitude;
@@ -106,7 +111,8 @@ int main(int argc, char **argv){
       string SO = m["output"].as<string>();
 
       if (SO == "list") outputtype = LIST;
-      if (SO == "trail") outputtype = TRAIL;
+			if (SO == "trail") outputtype = TRAIL;
+			if (SO == "sim") outputtype = SIM;
   }
   else outputtype = TRAIL;
 
@@ -129,8 +135,14 @@ int main(int argc, char **argv){
   }
   else{
    time_t now = time(0);
-   tm *ltm = localtime(&now);
+   ltm = *localtime(&now);
 	}
+
+	if (m.count("angle"))
+ {
+		 bereik = m["angle"].as<float>();
+ }
+ else bereik = 40.0;
 
    if (m.count("year"))
   {
@@ -196,24 +208,23 @@ int main(int argc, char **argv){
   }
   else  step = 3600;
 
+
 // end BOOST header   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
   if (outputtype != NO_OUTPUT){
 
-
 	int count;
 	char s_az[20], s_hd[20];
 	star = new starclass();
-	time_t now = time(0);
-	/* star->setdate(ltm->tm_year+1900,
-				  (short int)ltm->tm_mon+1,
-				  (short int)ltm->tm_mday,
-				  (short int)ltm->tm_hour,
-				  (short int)ltm->tm_min,
-				  (short int)ltm->tm_sec);
-	*/
-	// cout << "timeset = " << timeset << endl;
+	// time_t ltm = time(0);
+	star->setdate(ltm.tm_year+1900,
+					(short int)ltm.tm_mon,
+					(short int)ltm.tm_mday,
+					(short int)ltm.tm_hour+(short int)ltm.tm_min/60.+(short int)ltm.tm_sec/3600.);
+
+//
+	//  cout << "timeset = " << timeset << endl;
 	if(timeset > 0) {
 	if (timeset == SETYEAR | SETMONTH | SETDAY | SETHOUR | SETMIN | SETSEC) {
 //		cout << "OK" << endl;
@@ -231,6 +242,7 @@ int main(int argc, char **argv){
  	star->setLocation(latitude, longitude);
 	star->setMagnitude(magnitude);
 	star->setExposure(exposuretime, step);
+	star->setBereik(bereik);
 	if	(star->setref(refstar)){
 		cout << "Geen ster in de catalogus" << endl;
 		return 1;
@@ -255,25 +267,31 @@ int main(int argc, char **argv){
 	cout << "<select>" << endl;
     */
 // ++++++++++++++++++++  output list +++++++++++++++++++++++++++++++++++++++
-    if (outputtype == LIST){
+  if (outputtype == LIST){
 	count = star->get_starlist();
 	for(int i =0; i < count; i++) {
 		double x, y;
-		//cout << star->star_list[i].az << " " << star->star_list[i].zd << endl;
-		x=50.-sin((star->star_list[i].az)*3.14/180.) * star->star_list[i].zd ;
-		y=50.-cos((star->star_list[i].az)*3.14/180.) * star->star_list[i].zd;
-		cout << "<div class=StarLabel id=\"star\" x="<<x-50<<" y="<<y-50<<" style=\"position: absolute; top: " << y << "%;  left: " << x << "%; \">" << star->star_list[i].starname << "</div>" << endl;
+		x=50.-sin((star->star_list[i].az)*PI/180.) * star->star_list[i].zd;
+		y=50.-cos((star->star_list[i].az)*PI/180.) * star->star_list[i].zd;
+		cout << "<div class=StarLabel number=" << star->star_list[i].starnumber << " id=\"star\" x="<<x-50<<" y="<<y-50<<" style=\"position: absolute; top: " << y << "%;  left: " << x << "%; \">" << star->star_list[i].starname<<"<br>" << star->star_list[i].starnumber << "</div>" << endl;
 		cout << "<img id=\"star\" x="<<x-50<<" y="<<y-50<<" src=\"ster.png\" class=StarImg style=\"position: absolute; top: " << y-3 << "%;  left: " << x-3 << "%; \">"<< endl;
-	}
-
-	// cout << "</div>";
+		}
 	}
 // ++++++++++++++++++++  output trail +++++++++++++++++++++++++++++++++++++++
 	if (outputtype == TRAIL)
-	{
+	  {
 			star->calc_trail();
     }
+		// ++++++++++++++++++++  output sim +++++++++++++++++++++++++++++++++++++++
+	if (outputtype == SIM)
+		  {
+				star->setExposure(3600, 20);
 
-    }
-	return 0;
-}
+					//star->star_gen_trail();
+				}
+
+				//cout << "Time: " <<  setprecision(15) << star->tjd << endl;
+
+  }
+	return 0;  // input != NO_OUTPUT
+}  // main
