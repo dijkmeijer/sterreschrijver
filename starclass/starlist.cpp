@@ -292,7 +292,7 @@ int main(int argc, char **argv){
 				count = star->get_starlist();
 				for(int i =0; i < count; i++) {
 					star->setref(star->star_list[i].starnumber);
-					cout << star->schrijfster.star.starnumber << endl;
+					cout << star->schrijfster.star.starnumber << "  " << star->schrijfster.star.starname << endl;
 					star->calc_trail();
 				}
 				//cout << "Time: " <<  setprecision(15) << star->tjd << endl;
