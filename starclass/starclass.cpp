@@ -321,6 +321,7 @@ int starclass::calc_trail()
 	double ymax=-10000;
 	double xmin=10000;
 	double ymin=10000;
+  double xd, yd;
     Quaternion<> x(0,1,0,0);
     Quaternion<> y(0,0,1,0);
     Quaternion<> z(0,0,0,1);
@@ -338,29 +339,36 @@ int starclass::calc_trail()
 
         ster_dir=get_position(i);
 	    //cout << (ster_dir.azd+180.) - 360. << " " << 90.-ster_dir.zd << endl;
-        s1.set(ster_dir.azd,90.-ster_dir.zd);
+        // s1.set(ster_dir.azd,90.-ster_dir.zd);
 
-        q1.set(s1);
-        // cout << "q1 " << q1 << endl;
-        q2=~R*q1*R;
-        //   printf("%9.6f %9.6f %9.6f %9.6f\n", (double)q2.w, (double)q2.x,(double)q2.y,(double)q2.z);
-        //cout << "q2 " << q2 << endl;
-        t=focus/q2.z;
-        Lijnen[i].x=t*q2.x;
-        Lijnen[i].y=t*q2.y;
-        if(i==0)
-        {
-            trailsize=-t*q2.x;
-        }
-        if(i == stappen-1)
-        {
-            trailsize+=t*q2.x;
-        }
-        cout << "c " << t*q2.x << " " << t*q2.y << endl;
+        // q1.set(s1);
+        // // cout << "q1 " << q1 << endl;
+        // q2=~R*q1*R;
+        // //   printf("%9.6f %9.6f %9.6f %9.6f\n", (double)q2.w, (double)q2.x,(double)q2.y,(double)q2.z);
+        // //cout << "q2 " << q2 << endl;
+        // t=focus/q2.z;
+        // Lijnen[i].x=t*q2.x;
+        // Lijnen[i].y=t*q2.y;
+        // if(i==0)
+        // {
+        //     trailsize=-t*q2.x;
+        // }
+        // if(i == stappen-1)
+        // {
+        //     trailsize+=t*q2.x;
+        // }
+        // cout << "c " << t*q2.x << " " << t*q2.y << endl;
+        xd=50.-sin(ster_dir.azd*PI/180.) * ster_dir.zd;
+    		yd=50.-cos(ster_dir.azd*PI/180.) * ster_dir.zd;
+
+        cout << "xy " << xd << " " << yd << endl;
+
+
+
 
     }
-	cout << "t " << fabs(trailsize) << endl;
-	cout << "r " << R.x << " " <<  R.y << " "  << R.z << " " <<  R.w << endl;
+	// cout << "t " << fabs(trailsize) << endl;
+	// cout << "r " << R.x << " " <<  R.y << " "  << R.z << " " <<  R.w << endl;
       //  cout << poolster.star.starnumber << endl;
       //  cout << schrijfster.star.starnumber << endl;
     return 0;
