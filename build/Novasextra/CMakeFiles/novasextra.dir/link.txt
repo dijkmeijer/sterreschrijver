@@ -1,2 +1,0 @@
-/usr/bin/ar cr libnovasextra.a  CMakeFiles/novasextra.dir/Novasextra.c.o
-/usr/bin/ranlib libnovasextra.a
