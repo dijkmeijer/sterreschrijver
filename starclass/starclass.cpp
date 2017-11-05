@@ -82,7 +82,7 @@ int starclass::starlist(double start)
 int starclass::read_cat()
 {
   FILE *fp;
-    fp=fopen("zet \"cat_entry.cat\" in pwd", "rb");
+    fp=fopen("cat_entry.cat", "rb");
     if(fp==NULL)
       {printf("cat_entry.cat  niet gevonden\n");
       exit(1);
