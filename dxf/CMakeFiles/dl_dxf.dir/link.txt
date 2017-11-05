@@ -1,2 +1,0 @@
-/usr/bin/ar cr libdl_dxf.a  CMakeFiles/dl_dxf.dir/dl_dxf.cpp.o CMakeFiles/dl_dxf.dir/dl_writer_ascii.cpp.o
-/usr/bin/ranlib libdl_dxf.a

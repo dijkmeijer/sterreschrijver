@@ -1,1 +1,0 @@
-/home/Valentijn/sterrenschrijver_cmake/conv_cat/bin/CMakeFiles/convcat.dir
