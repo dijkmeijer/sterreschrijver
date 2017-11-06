@@ -20,14 +20,26 @@ class direction
     double azh;
     double azd;
     double zd;
+    double x;
+    double y;
     int dir_type;
 };
+
+// class position
+// {
+//     public:
+//     double x;
+//     double y;
+//     position convert(direction star);
+// };
 
 class star_list_rec {
 	public:
 	double az;
 	double zd;
 	double hd;
+  double x;
+  double y;
 	char starname[SIZE_OF_OBJ_NAME];
 	int starnumber;
 };

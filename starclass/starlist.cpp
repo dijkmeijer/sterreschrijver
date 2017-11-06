@@ -271,12 +271,15 @@ int main(int argc, char **argv){
 	count = star->get_starlist();
 	for(int i =0; i < count; i++) {
 		double x, y;
-		x=50.-sin((star->star_list[i].az)*PI/180.) * star->star_list[i].zd;
-		y=50.-cos((star->star_list[i].az)*PI/180.) * star->star_list[i].zd;
+		// x=50.-sin((star->star_list[i].az)*PI/180.) * star->star_list[i].zd;
+		// y=50.-cos((star->star_list[i].az)*PI/180.) * star->star_list[i].zd;
+		x = star->star_list[i].x;
+		y = star->star_list[i].y;
 		cout << "<div class=StarLabel number=" << star->star_list[i].starnumber << " id=\"star\" x="<<x-50<<" y="<<y-50<<" style=\"position: absolute; top: " << y << "%;  left: " << x << "%; \">" << star->star_list[i].starname<<"<br>" << star->star_list[i].starnumber << "</div>" << endl;
 		cout << "<img id=\"star\" x="<<x-50<<" y="<<y-50<<" src=\"ster.png\" class=StarImg style=\"position: absolute; top: " << y-3 << "%;  left: " << x-3 << "%; \">"<< endl;
 		}
 	}
+
 // ++++++++++++++++++++  output trail +++++++++++++++++++++++++++++++++++++++
 	if (outputtype == TRAIL)
 	  {
@@ -288,15 +291,18 @@ int main(int argc, char **argv){
 				star->setExposure(3600, 20);
 
 					//star->star_gen_trail();
-				}
+
 				count = star->get_starlist();
 				for(int i =0; i < count; i++) {
 					star->setref(star->star_list[i].starnumber);
 					cout << star->schrijfster.star.starnumber << "  " << star->schrijfster.star.starname << endl;
 					star->calc_trail();
-				}
+
 				//cout << "Time: " <<  setprecision(15) << star->tjd << endl;
 
-  }
+  			}
+			}
+
 	return 0;  // input != NO_OUTPUT
+}
 }  // main

@@ -266,6 +266,7 @@ public:
         w=0;
         return Quaternion(*this);
     }
+    
     Sphere<> toSphere()
     {
         Sphere<> s(0.,0.);
@@ -398,4 +399,3 @@ inline Quaternion<> calc_orientatie(Quaternion<> q1, Quaternion<> q2, orientatie
 };
 
 #endif
-

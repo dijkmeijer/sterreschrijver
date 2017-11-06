@@ -11,6 +11,14 @@ extern "C" {
 
 using namespace std;
 
+// position position::convert(direction star)
+// {
+//     position sterPos;
+//     x=sterPos.x=50.-sin(star.azd*PI/180.) * star.zd;
+//     y=sterPos.y=50.-cos(star.azd*PI/180.) * star.zd;
+//     return sterPos;
+// }
+
 starclass::starclass()
 {
     //ctor
@@ -49,6 +57,7 @@ starclass::starclass()
     printf("JPLEPH geladen\n");
 
     n_stars = read_cat();
+
     printf("cat geladen\n");
 
     fixstar=11767;
@@ -180,8 +189,8 @@ int starclass::get_starlist()
     short int accuracy = 0;
     double  ra, dec;
     double zd, az, rar, decr;
-	char s[100];
-	int count = 0;
+	  char s[100];
+	  int count = 0;
     for(int i = 0; i < n_stars; i++)
     {
 		error = app_star(tjd, &(star[i].star), accuracy, &ra, &dec);
@@ -210,6 +219,8 @@ int starclass::get_starlist()
 				star_list[count].az = az;
 				star_list[count].zd = zd;
 				star_list[count].hd = 90.-zd;
+        star_list[count].x = 50.-sin(az*PI/180.) * zd;
+        star_list[count].y = 50.-cos(az*PI/180.) * zd;
 				strcpy(star_list[count].starname, star[i].star.starname);
 				star_list[count].starnumber = star[i].star.starnumber;
 
@@ -248,7 +259,7 @@ direction starclass::get_postionlist()
                 error = app_star(t, &(star[i].star), accuracy, &ra, &dec);
                 equ2hor(t,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&d.zd,&d.azh,&rar,&decr);
                 printf("az %9.4f, elev %6.4f\n", d.azh, 90.0-d.zd);
-                 printf("%f\n", t);
+                printf("%f\n", t);
                 t+=stepsize;
             }
         }
@@ -267,21 +278,17 @@ direction starclass::get_position(int it)
 
     if(it < stappen)
     {
-        error = app_star(t, &(schrijfster.star), accuracy, &ra, &dec);
+        // error = app_star(t, &(schrijfster.star), accuracy, &ra, &dec);
 
-        // error=topo_star(t, deltat, &(schrijfster.star), &geo_loc, accuracy,&ra, &dec);
-        // cout << ra << " " << dec << " " << error << endl;
+        error=topo_star(t, deltat, &(schrijfster.star), &geo_loc, accuracy,&ra, &dec);
 
 
         equ2hor(t,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&d.zd,&d.azd,&rar,&decr);
-
+        d.x=50.-sin(d.azd*PI/180.) * d.zd;
+        d.y=50.-cos(d.azd*PI/180.) * d.zd;
 
         d.azh=d.azd*24./360.;
 
-        // cout << "geoloc " << geo_loc.latitude << endl;
-        // cout << d.azd << " " << d.zd << error << endl;
-        // printf("az %9.4f, elev %6.4f\n", az, 90.0-zd);
-        // printf("%f\n", t);
     }
     return d;
 }
@@ -298,8 +305,8 @@ direction starclass::get_pool()
     double ra, dec;
     double rar, decr;
     double pt=tjd+exposuretime/48.;
-    error = app_star(pt, &(poolster.star), accuracy, &ra, &dec);
-//	error=topo_star(pt, deltat, &(poolster.star), &geo_loc, accuracy,&ra, &dec);
+  // error = app_star(pt, &(poolster.star), accuracy, &ra, &dec);
+  	error=topo_star(pt, deltat, &(poolster.star), &geo_loc, accuracy,&ra, &dec);
     equ2hor(pt,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&d.zd,&d.azd,&rar,&decr);
     d.azh=d.azd*24./360.;
     // cout << "poolster : "<< d.zd << ", " << d.azd << endl;
@@ -316,53 +323,30 @@ direction starclass::get_pool()
 
 int starclass::calc_trail()
 {
-    double t;
+  double t;
 	double xmax=-10000;
 	double ymax=-10000;
 	double xmin=10000;
 	double ymin=10000;
   double xd, yd;
-    Quaternion<> x(0,1,0,0);
-    Quaternion<> y(0,0,1,0);
-    Quaternion<> z(0,0,0,1);
-    direction ster_dir = get_position(stappen/2.);
-    direction pool_dir=get_pool();
-
-    Sphere<> s1(ster_dir.azd,90.-ster_dir.zd);
-    Sphere<> s2(pool_dir.azd,90.-pool_dir.zd);
-    Quaternion<> q1(s1);
-    Quaternion<> q2(s2);
-    R=calc_orientatie(q1, q2, &schrijverstand);
-
+    // Quaternion<> x(0,1,0,0);
+    // Quaternion<> y(0,0,1,0);
+    // Quaternion<> z(0,0,0,1);
+   direction ster_dir = get_position(stappen/2.);
+   direction pool_dir=get_pool();
+    //
+    // Sphere<> s1(ster_dir.azd,90.-ster_dir.zd);
+    // Sphere<> s2(pool_dir.azd,90.-pool_dir.zd);
+    // Quaternion<> q1(s1);
+    // Quaternion<> q2(s2);
+    // R=calc_orientatie(q1, q2, &schrijverstand);
+  //  position sterPosition;
     for(int i=0; i<stappen; i++)
     {
 
         ster_dir=get_position(i);
-	    //cout << (ster_dir.azd+180.) - 360. << " " << 90.-ster_dir.zd << endl;
-        // s1.set(ster_dir.azd,90.-ster_dir.zd);
 
-        // q1.set(s1);
-        // // cout << "q1 " << q1 << endl;
-        // q2=~R*q1*R;
-        // //   printf("%9.6f %9.6f %9.6f %9.6f\n", (double)q2.w, (double)q2.x,(double)q2.y,(double)q2.z);
-        // //cout << "q2 " << q2 << endl;
-        // t=focus/q2.z;
-        // Lijnen[i].x=t*q2.x;
-        // Lijnen[i].y=t*q2.y;
-        // if(i==0)
-        // {
-        //     trailsize=-t*q2.x;
-        // }
-        // if(i == stappen-1)
-        // {
-        //     trailsize+=t*q2.x;
-        // }
-        // cout << "c " << t*q2.x << " " << t*q2.y << endl;
-        xd=50.-sin(ster_dir.azd*PI/180.) * ster_dir.zd;
-    		yd=50.-cos(ster_dir.azd*PI/180.) * ster_dir.zd;
-
-        cout << "xy " << xd << " " << yd << endl;
-
+        cout << "xy " << ster_dir.x  << " " << ster_dir.y << endl;
 
 
 
