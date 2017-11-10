@@ -51,6 +51,30 @@ providers: [
               stdin: false
           version: 2
         }
+        {
+          project: "/home/valentijn/ster/sterreschrijver"
+          source: "/home/valentijn/ster/sterreschrijver/.build-tools.cson"
+          name: "draw startrails"
+          command: "python draw.py"
+          wd: "draw"
+          env: {}
+          modifier: {}
+          environment:
+            name: "child_process"
+            config:
+              stdoe: "both"
+          stdout:
+            pipeline: []
+          stderr:
+            pipeline: []
+          output:
+            console:
+              close_success: true
+              queue_in_buffer: true
+              colors: false
+              stdin: false
+          version: 2
+        }
       ]
   }
 ]

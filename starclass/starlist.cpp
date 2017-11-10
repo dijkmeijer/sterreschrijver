@@ -136,6 +136,7 @@ int main(int argc, char **argv){
   else{
    time_t now = time(0);
    ltm = *localtime(&now);
+
 	}
 
 	if (m.count("angle"))
@@ -212,12 +213,18 @@ int main(int argc, char **argv){
 // end BOOST header   +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
   if (outputtype != NO_OUTPUT){
 
 	int count;
 	char s_az[20], s_hd[20];
 	star = new starclass();
-	// time_t ltm = time(0);
+	//time_t ltm = ;
+
+	time_t now = time(0);
+	ltm = *localtime(&now);
+
+
 	star->setdate(ltm.tm_year+1900,
 					(short int)ltm.tm_mon,
 					(short int)ltm.tm_mday,
@@ -268,6 +275,7 @@ int main(int argc, char **argv){
     */
 // ++++++++++++++++++++  output list +++++++++++++++++++++++++++++++++++++++
   if (outputtype == LIST){
+	printf("time %d %f\n", ltm.tm_sec, star->tjd);
 	count = star->get_starlist();
 	for(int i =0; i < count; i++) {
 		double x, y;
@@ -288,7 +296,7 @@ int main(int argc, char **argv){
 		// ++++++++++++++++++++  output sim +++++++++++++++++++++++++++++++++++++++
 	if (outputtype == SIM)
 		  {
-				star->setExposure(3600, 20);
+				star->setExposure(3600., 50);
 
 					//star->star_gen_trail();
 

@@ -203,15 +203,7 @@ int starclass::get_starlist()
 
 	for(int i = 0; i < n_stars; i++)
     {
-		/*cout << star[i].star.starnumber << " " <<
-         		star[i].star.starname  << " " <<
-         		star[i].star.ra  << " " <<
-         		star[i].star.dec  << " " <<
-         		star[i].star.promora  << " " <<
-         		star[i].star.promodec  << " " <<
-         		star[i].star.parallax  << " " <<
-				star[i].Vmag << endl;
-		*/
+
         error = app_star(tjd, &(star[i].star), accuracy, &ra, &dec);
         equ2hor(tjd,deltat,accuracy,0.0,0.0,&geo_loc, ra, dec,1,&zd,&az,&rar,&decr);
         if((zd < bereik) && star[i].Vmag < magnitude)
@@ -224,12 +216,6 @@ int starclass::get_starlist()
 				strcpy(star_list[count].starname, star[i].star.starname);
 				star_list[count].starnumber = star[i].star.starnumber;
 
-				/*cout << star_list[count].az << "\t"
-				     << star_list[count].zd << "\t"
-				     << star_list[count].hd << "\t"
-				     << star_list[count].starname <<"\t"
-				     << star_list[count].starnumber << endl;
-				*/
 				count++;
 
 
@@ -329,32 +315,17 @@ int starclass::calc_trail()
 	double xmin=10000;
 	double ymin=10000;
   double xd, yd;
-    // Quaternion<> x(0,1,0,0);
-    // Quaternion<> y(0,0,1,0);
-    // Quaternion<> z(0,0,0,1);
+
    direction ster_dir = get_position(stappen/2.);
    direction pool_dir=get_pool();
-    //
-    // Sphere<> s1(ster_dir.azd,90.-ster_dir.zd);
-    // Sphere<> s2(pool_dir.azd,90.-pool_dir.zd);
-    // Quaternion<> q1(s1);
-    // Quaternion<> q2(s2);
-    // R=calc_orientatie(q1, q2, &schrijverstand);
-  //  position sterPosition;
-    for(int i=0; i<stappen; i++)
+
+   for(int i=0; i<stappen; i++)
     {
-
         ster_dir=get_position(i);
-
         cout << "xy " << ster_dir.x  << " " << ster_dir.y << endl;
-
-
-
     }
-	// cout << "t " << fabs(trailsize) << endl;
-	// cout << "r " << R.x << " " <<  R.y << " "  << R.z << " " <<  R.w << endl;
-      //  cout << poolster.star.starnumber << endl;
-      //  cout << schrijfster.star.starnumber << endl;
+
+
     return 0;
 }
 
