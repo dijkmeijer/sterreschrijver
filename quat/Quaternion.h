@@ -7,8 +7,8 @@
 
 
 using namespace std;
-
-const double PI = 3.141592653589793238462 ;
+      
+const double PI = 3.141592653589793238463 ;
 template <class T = double>
 class Sphere
 {
@@ -266,7 +266,7 @@ public:
         w=0;
         return Quaternion(*this);
     }
-    
+
     Sphere<> toSphere()
     {
         Sphere<> s(0.,0.);

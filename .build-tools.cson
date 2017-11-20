@@ -31,7 +31,7 @@ providers: [
           project: "/home/valentijn/ster/sterreschrijver"
           source: "/home/valentijn/ster/sterreschrijver/.build-tools.cson"
           name: "list"
-          command: "./starlist -o list"
+          command: "./starlist -o sim -p 10"
           wd: "../build/starclass"
           env: {}
           modifier: {}
@@ -73,6 +73,9 @@ providers: [
               queue_in_buffer: true
               colors: false
               stdin: false
+            linter:
+              no_trace: false
+              immediate: false
           version: 2
         }
       ]
