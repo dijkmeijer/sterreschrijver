@@ -93,6 +93,7 @@ int starclass::read_cat() {
   star = (star_rec *)malloc(n_stars * sizeof(star_rec));
   fread(star, sizeof(star_rec), n_stars, fp);
   fclose(fp);
+  printf("%d\n", n_stars);
   return n_stars;
 }
 

@@ -1,7 +1,5 @@
 cmake_minimum_required (VERSION 2.8.9)
 project (sterreschrijver)
-include_directories (SYSTEM /home/valentijn/boost_1_65_1)
-link_directories ( /home/valentijn/boost_1_65_1/stage/lib)
 add_subdirectory(Novas_C3.1)
 add_subdirectory(Novasextra)
 add_subdirectory(dxf)

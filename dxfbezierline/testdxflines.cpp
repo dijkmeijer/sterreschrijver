@@ -25,16 +25,15 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include <boost/program_options.hpp>
-
+#include <getopt.h>
 #include "dxfbezierline.h"
 
 void usage();
 void ConvertDXFBezier();
 
-int steps;
-double textlength;
-string f_name;
+int steps=3600;
+double textlength=10.;
+string f_name="willekeurige_tekst.dxf";
 
 /*
  * @brief Main function for DXFLib test program.
@@ -52,53 +51,56 @@ int main(int argc, char** argv) {
 
 
 // Boost header +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	char Mes[125];
-	sprintf(Mes, "Allowed options for %s", argv[0]);
-	boost::program_options::options_description d(Mes);
-    d.add_options()
-      ("help,h",
-        "produce this help message")
-      ("file,f",
-	     boost::program_options::value<string>()->required(),
-         "Set name of DXF file to be converted  ")
-      ("textlength,l",
-         boost::program_options::value<float>(),
-         "Set length of text")
-	  ("steps,s",
-         boost::program_options::value<int>(),
-         "Set number of steps in text");
 
-  boost::program_options::variables_map m;
-  boost::program_options::store(
-  boost::program_options::parse_command_line(
-   argc, argv, d), m);
-  boost::program_options::notify(m);
+int c;
+while (1)
+	{
+		static struct option long_options[] =
+		 {
+				{"help",      no_argument, 0, 'h'},
+				{"file",    required_argument, 0, 'f'},
+				{"length", required_argument, 0, 'l'},
+				{"steps",  required_argument, 0, 'p'},
+				{0, 0, 0, 0}
+			};
+		/* getopt_long stores the option index here. */
+		int option_index = 0;
 
-  //If one of the options is set to 'help'...
-  if (m.count("help"))
-  {
-    //Display the options_description
-    std::cout << "option" << d << "\n";
-	return 0;
-  }
+		c = getopt_long (argc, argv, ":hf:l:p:",
+										 long_options, &option_index);
 
-  if (m.count("file"))
-  {
-      f_name = m["file"].as<string> ();
-  }
+		/* Detect the end of the options. */
+		if (c == -1)
+			break;
 
-  if (m.count("textlength"))
-  {
-     textlength = m["textlength"].as<float>();
+		switch (c)
+			{
+			case 'h': // output
+				cout << "Usage: "<< argv[0] << " [-holmvayMdHisSpe]" << endl;
+				cout << "\t-h --help: this info" << endl;
+				cout << "\t-f --file: Filename of dxf file" << endl;
+				cout << "\t-l --length: lengte van de trail" << endl;
+				cout << "\t-p --steps: aantal punten in trail" << endl;
 
-  }
-  else textlength = 10.;
+				exit(0);
+				break;
+			case 'f': // output
+					 f_name = optarg;
+				break;
 
-   if (m.count("steps"))
-  {
-      steps = m["steps"].as<int>();
-  }
-  else steps = 3600;
+			case 'l': // longitude
+					textlength = atof(optarg);
+				break;
+
+			case 'p': // latitude
+	 				steps = atoi(optarg);
+				break;
+
+	    }
+ }
+ cout << "output type = " << f_name << endl;
+ cout << "length = " << textlength << endl;
+ cout << "steps = " << steps << endl;
 
 
 // end BOOST header   ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
